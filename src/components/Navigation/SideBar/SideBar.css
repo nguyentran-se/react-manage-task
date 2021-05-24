@@ -1,0 +1,10 @@
+.SideBar {
+   background-color: pink;
+   width: 280px;
+   height: 100vh;
+}
+.Wrap {
+   width: 240px;
+   /* margin: 0 auto; */
+   padding: 20px;
+}

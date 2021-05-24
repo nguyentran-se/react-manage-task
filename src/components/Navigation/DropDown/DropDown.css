@@ -1,0 +1,52 @@
+.DropDown {
+   text-transform: capitalize;
+   font-size: 15px;
+   margin-bottom: 20px;
+}
+.DropDown:first-child {
+   cursor: pointer;
+   margin: 30px -20px 20px;
+}
+.DropDown:first-child h3 {
+   padding: 5px 20px;
+   width: 100%;
+   margin: 0;
+}
+.DropDown:first-child h3:hover {
+   background-color: #f6f6f6;
+}
+.DropHeader {
+   display: flex;
+   align-items: center;
+}
+.DropBody {
+   margin: 20px -20px 0;
+   height: 0;
+   line-height: 0;
+   overflow: hidden;
+   transition: height linear 0.3s;
+}
+.DropDown.ShowDrop .DropBody {
+   height: 74px;
+}
+
+.Heading {
+   width: fit-content;
+   font-size: 20px;
+   font-weight: 600;
+   margin-right: 10px;
+}
+.Icon {
+   width: 28px;
+   color: #9b9b9b;
+   cursor: pointer;
+   transform: translateY(1px);
+   border-radius: 50%;
+   transition: all linear 0.3s;
+}
+.Icon:hover {
+   background-color: #c9c2c2;
+}
+.DropDown.ShowDrop .Icon {
+   transform: rotate(180deg);
+}
