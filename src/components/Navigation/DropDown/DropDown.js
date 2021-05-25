@@ -14,7 +14,7 @@ function DropDown({ dropDown, showDropDown }) {
 
    let transformedDropDown = dropDownArray.map((dropItem) => {
       return (
-         <div
+         <li
             className={
                dropDown[dropItem].selected
                   ? [classes.DropDown, classes.ShowDrop].join(" ")
@@ -30,10 +30,19 @@ function DropDown({ dropDown, showDropDown }) {
                   />
                )}
             </div>
-            <div className={classes.DropBody}>
-               <DropDownItems items={dropDown[dropItem].list} />
-            </div>
-         </div>
+            {dropDown[dropItem].list.length > 0 && (
+               <div
+                  className={classes.DropBody}
+                  style={{
+                     height: dropDown[dropItem].selected
+                        ? `${dropDown[dropItem].list.length * 37}px`
+                        : 0,
+                  }}>
+                  <DropDownItems items={dropDown[dropItem].list} />
+               </div>
+            )}
+            <div style={{ height: "22px" }}></div>
+         </li>
       );
    });
    return transformedDropDown;

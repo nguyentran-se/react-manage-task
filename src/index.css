@@ -1,8 +1,19 @@
 @import "../node_modules/normalize.css/normalize.css";
+*,
+*::after,
+*::before {
+   box-sizing: border-box;
+}
 body {
    margin: 0;
    padding: 0;
    font-family: "Inter", sans-serif;
+   overflow-y: hidden;
+}
+ul {
+   padding: 0;
+   list-style: none;
+   margin: 0;
 }
 h1,
 h2,

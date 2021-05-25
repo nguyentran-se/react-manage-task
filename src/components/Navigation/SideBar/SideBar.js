@@ -5,10 +5,8 @@ import NavItems from "../NavItems/NavItems";
 const SideBar = (props) => {
    return (
       <section className={classes.SideBar}>
-         <div className={classes.Wrap}>
-            <UserInfo />
-            <NavItems />
-         </div>
+         <UserInfo />
+         <NavItems />
       </section>
    );
 };

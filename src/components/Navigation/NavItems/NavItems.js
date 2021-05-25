@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DropDown from "../DropDown/DropDown";
+import classes from "./NavItems.css";
 class NavItems extends Component {
    state = {
       calendar: {
@@ -18,6 +19,14 @@ class NavItems extends Component {
          selected: true,
          list: ["priority"],
       },
+      test: {
+         selected: true,
+         list: ["test"],
+      },
+      test2: {
+         selected: true,
+         list: ["test2", "test3"],
+      },
    };
 
    showDropDown = (dropType) => {
@@ -31,9 +40,14 @@ class NavItems extends Component {
       console.log(this.state);
       console.log(this.state.calendar.list.length);
       return (
-         <div>
-            <DropDown dropDown={this.state} showDropDown={this.showDropDown} />
-         </div>
+         <nav className={classes.Nav}>
+            <ul>
+               <DropDown
+                  dropDown={this.state}
+                  showDropDown={this.showDropDown}
+               />
+            </ul>
+         </nav>
       );
    }
 }

@@ -1,0 +1,16 @@
+.Nav {
+   margin-top: 10px;
+   padding-top: 10px;
+   height: 546px;
+   overflow: auto;
+   margin-right: 4px;
+}
+
+.Nav::-webkit-scrollbar {
+   width: 6px;
+   background-color: transparent;
+}
+.Nav::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: #9b9b9b;
+}

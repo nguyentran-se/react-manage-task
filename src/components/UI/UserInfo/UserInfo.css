@@ -4,6 +4,8 @@
    height: 120px;
    align-items: center;
    justify-content: space-between;
+   padding: 0 20px;
+   margin-top: 20px;
 }
 .UserName {
    line-height: 1.6;
