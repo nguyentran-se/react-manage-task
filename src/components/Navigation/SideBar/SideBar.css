@@ -1,7 +1,8 @@
 .SideBar {
-   background-color: #fff;
+   background-color: var(--bg-theme-color);
    width: 280px;
    height: 100vh;
+   color: var(--text-color);
 }
 /* .Wrap {
    width: 240px;

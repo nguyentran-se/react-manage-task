@@ -8,10 +8,15 @@
 }
 .DropDown:first-child h3 {
    width: 100%;
-   margin: 0;
+   padding: 5px 0;
+   margin-left: 20px;
+   margin-right: 0;
 }
-.DropDown:first-child h3:hover {
-   background-color: #f6f6f6;
+.DropDown:first-child .DropHeader {
+   padding: 0;
+}
+.DropDown:first-child .DropHeader:hover {
+   background-color: var(--hover-nav-color);
 }
 .DropHeader {
    display: flex;
@@ -26,12 +31,12 @@
 .Heading {
    width: fit-content;
    font-size: 20px;
-   font-weight: 600;
-   margin-right: 10px;
+   font-weight: var(--fw-high-level);
+   margin-right: 8px;
 }
 .Icon {
-   width: 28px;
-   color: #9b9b9b;
+   width: 26px;
+   color: var(--text-nav-color);
    cursor: pointer;
    transform: translateY(1px);
    border-radius: 50%;
@@ -39,7 +44,7 @@
 }
 
 .Icon:hover {
-   background-color: #c9c2c2;
+   background-color: var(--hoversb-icon-color);
 }
 .DropDown.ShowDrop .Icon {
    transform: rotate(180deg);

@@ -4,13 +4,13 @@
    padding: 5px 20px;
    line-height: 1.5;
    transition: all linear 0.1s;
-   font-weight: 500;
+   font-weight: var(--fw-low-level);
 }
 .NavLink:active,
 .NavLink:hover {
-   background-color: #f6f6f6;
+   background-color: var(--hover-nav-color);
 }
 
 .NavLink.active {
-   color: #0080ff;
+   color: var(--primary-color);
 }

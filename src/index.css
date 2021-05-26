@@ -4,6 +4,7 @@
 *::before {
    box-sizing: border-box;
 }
+
 body {
    margin: 0;
    padding: 0;
@@ -28,7 +29,7 @@ img {
    height: auto;
 }
 a {
-   color: #000;
+   color: var(--text-nav-color);
    font-family: "Inter", sans-serif;
    font-style: normal;
    text-decoration: none;
