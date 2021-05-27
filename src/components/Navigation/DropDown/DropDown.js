@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import classes from "./DropDown.css";
 import DropDownItems from "./DropDownItems/DropDownItems";

@@ -1,0 +1,35 @@
+.TasksBar {
+   position: fixed;
+   left: 320px;
+   top: 138px;
+   display: flex;
+   align-items: center;
+}
+.TasksBarItems {
+   display: flex;
+   padding: 0 20px;
+   border-radius: 20px;
+   background-color: var(--bg-theme-color);
+   align-items: center;
+}
+.TasksBarItems h3 {
+   font-size: 20px;
+}
+.Item {
+   cursor: pointer;
+   padding: 6px 6px;
+}
+.Icon {
+   width: 24px;
+   color: var(--text-color);
+   transition: all linear 0.3s;
+}
+.Item:hover > .Icon {
+   color: var(--primary-color);
+}
+.Separate {
+   width: 1px;
+   background-color: #d8d8d8;
+   height: 24px;
+   margin: 0 10px 0 16px;
+}

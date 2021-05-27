@@ -1,0 +1,26 @@
+.Header {
+   position: fixed;
+   right: 50px;
+   top: 40px;
+   display: flex;
+}
+
+.HeaderItems {
+   display: flex;
+   padding: 0 20px;
+   border-radius: 20px;
+   background-color: var(--bg-theme-color);
+   align-items: center;
+}
+.Item {
+   cursor: pointer;
+   padding: 6px 11px;
+}
+.Icon {
+   width: 24px;
+   color: var(--text-color);
+   transition: all linear 0.3s;
+}
+.Item:hover > .Icon {
+   color: var(--primary-color);
+}

@@ -4,7 +4,8 @@
    --text-color: #030303;
    --text-nav-color: #030303;
    --fw-high-level: 600;
-   --fw-low-level: 500;
+   --fw-medium-level: 500;
+   --fw-low-level: 400;
    --hoversb-icon-color: #d8d8d8;
    --hover-nav-color: #f6f6f6;
    --sidebar-icon-color: #acacac;
@@ -32,7 +33,7 @@
    --text-nav-color: #6f6f6f;
    --hoversb-icon-color: #424242;
    --hover-nav-color: #252525;
-   --sidebar-icon-color: #2e2e2e;
+   --sidebar-icon-color: #6f6f6f;
    --main-icon-color: #e4e4e4;
    --primary-color: #0080ff;
    --tag-color: #f9d21f;

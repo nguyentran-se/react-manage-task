@@ -36,7 +36,7 @@
 }
 .Icon {
    width: 26px;
-   color: var(--text-nav-color);
+   color: var(--sidebar-icon-color);
    cursor: pointer;
    transform: translateY(1px);
    border-radius: 50%;
