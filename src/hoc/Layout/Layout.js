@@ -8,9 +8,9 @@ const layout = (props) => {
    return (
       <section className={classes.Layout}>
          <SideBar />
-         <TasksBar />
          <div className={classes.Main}>
             <Header />
+            <TasksBar />
             <main>{props.children}</main>
          </div>
       </section>

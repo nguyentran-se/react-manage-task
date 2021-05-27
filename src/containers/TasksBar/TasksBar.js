@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./TasksBar.css";
-import { SearchIcon } from "@heroicons/react/solid";
 import {
    XCircleIcon,
    SwitchVerticalIcon,

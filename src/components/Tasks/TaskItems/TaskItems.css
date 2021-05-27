@@ -1,0 +1,36 @@
+.ItemWrapper {
+   padding: 4px 10px;
+   cursor: pointer;
+}
+.ItemWrapper:hover > .Item {
+   background-color: var(--hover-nav-color);
+}
+.Item {
+   font-size: 15px;
+   border-radius: 10px;
+   padding: 6px 10px 2px;
+   line-height: 1;
+   user-select: none;
+}
+.Item span {
+   font-size: 12px;
+   margin-left: 34px;
+   color: var(--sidebar-icon-color);
+   text-transform: capitalize;
+}
+.Content {
+   display: flex;
+   align-items: center;
+}
+
+.Content h4 {
+   color: var(--text-color);
+   font-weight: var(--fw-medium-level);
+}
+
+.Icon {
+   width: 24px;
+   transform: translateY(1px);
+   margin-right: 10px;
+   color: var(--sidebar-icon-color);
+}

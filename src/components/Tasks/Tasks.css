@@ -1,0 +1,37 @@
+.Header {
+   display: flex;
+   justify-content: space-between;
+}
+
+.Header {
+   padding: 25px 20px 7px 24px;
+   cursor: pointer;
+   user-select: none;
+}
+
+.Header:hover {
+   color: var(--primary-color);
+}
+
+.Header h3 {
+   font-size: 16px;
+   font-weight: var(--fw-high-level);
+   text-transform: capitalize;
+}
+.Header h3:active {
+   color: var(--primary-color);
+}
+.Header:hover > .Counter {
+   color: var(--bg-theme-color);
+}
+.Counter {
+   color: var(--bg-theme-color);
+   background-color: var(--bg-counter-color);
+   width: 24px;
+   height: 24px;
+   text-align: center;
+   line-height: 24px;
+   border-radius: 50%;
+   transform: translateY(-3px);
+   font-size: 12px;
+}

@@ -25,6 +25,7 @@
    --main-icon-color: #030303;
    --primary-color: #0080ff;
    --tag-color: #f9d21f;
+   --bg-counter-color: #9b9b9b;
 }
 /* Dark mode */
 .App.DarkMode {
@@ -37,4 +38,5 @@
    --main-icon-color: #e4e4e4;
    --primary-color: #0080ff;
    --tag-color: #f9d21f;
+   --bg-counter-color: #a1a1a1;
 }
