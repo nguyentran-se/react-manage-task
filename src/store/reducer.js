@@ -1,3 +1,4 @@
+import * as actionTypes from "./actions";
 const initialState = {
    groups: {
       today: {
@@ -7,26 +8,13 @@ const initialState = {
                title: "testing tasks 1",
                isCompleted: false,
                tag: "person",
+               isActive: false,
             },
             {
                title: "testing tasks 2",
                isCompleted: false,
                tag: "person",
-            },
-         ],
-      },
-      tomorrow: {
-         isSelected: false,
-         tasks: [
-            {
-               title: "tomorrow tasks 1",
-               isCompleted: false,
-               tag: "person",
-            },
-            {
-               title: "tomorrow tasks 2",
-               isCompleted: false,
-               tag: "person",
+               isActive: false,
             },
          ],
       },
@@ -34,9 +22,9 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-   const { type, topic } = action;
+   const { type, topic, value, deleteIndex } = action;
    switch (type) {
-      case "TOGGLE_TASKLIST":
+      case actionTypes.TOGGLE_TASKLIST:
          let updatedState = { ...state };
          updatedState.groups = { ...state.groups };
          updatedState.groups[topic] = { ...state.groups[topic] };
@@ -50,9 +38,35 @@ const reducer = (state = initialState, action) => {
                   ...state.groups.today,
                   isSelected: updatedState.groups.today.isSelected,
                },
-               tomorrow: {
-                  ...state.groups.tomorrow,
-                  isSelected: updatedState.groups.tomorrow.isSelected,
+            },
+         };
+      case actionTypes.ADD_TASK:
+         const task = {
+            title: value,
+            tag: "Personal",
+            isCompleted: false,
+            isActive: false,
+         };
+         return {
+            ...state,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: state.groups.today.tasks.concat(task),
+               },
+            },
+         };
+      case actionTypes.DELETE_TASK:
+         let copy = state.groups.today.tasks.slice();
+         copy.splice(deleteIndex, 1);
+         return {
+            ...state,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: copy,
                },
             },
          };

@@ -6,11 +6,14 @@
 .DropDown:first-child {
    cursor: pointer;
 }
-.DropDown:first-child h3 {
+.DropDown:first-child a {
    width: 100%;
    padding: 5px 0;
    margin-left: 20px;
    margin-right: 0;
+   font-size: 20px;
+   font-weight: var(--fw-high-level);
+   text-transform: capitalize;
 }
 .DropDown:first-child .DropHeader {
    padding: 0;

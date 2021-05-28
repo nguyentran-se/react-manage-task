@@ -2,6 +2,8 @@ import React from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import classes from "./DropDown.css";
 import DropDownItems from "./DropDownItems/DropDownItems";
+import { Link } from "react-router-dom";
+
 function DropDown({ dropDown, showDropDown }) {
    const dropDownArray = [];
    for (const dropItem in dropDown) {
@@ -22,7 +24,11 @@ function DropDown({ dropDown, showDropDown }) {
             }
             key={dropItem}>
             <div className={classes.DropHeader}>
-               <h3 className={classes.Heading}>{dropItem}</h3>
+               {dropDown[dropItem].path ? (
+                  <Link to={dropDown[dropItem].path}>{dropItem}</Link>
+               ) : (
+                  <h3 className={classes.Heading}>{dropItem}</h3>
+               )}
                {dropDown[dropItem].list.length > 0 && (
                   <ChevronDownIcon
                      onClick={() => showDropDown(dropItem)}

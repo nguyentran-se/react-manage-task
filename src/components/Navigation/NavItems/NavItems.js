@@ -6,10 +6,11 @@ class NavItems extends Component {
       calendar: {
          selected: false,
          list: [],
+         path: "calendar",
       },
       shortcuts: {
          selected: true,
-         list: ["today", "all tasks"],
+         list: ["today", "trash"],
       },
       lists: {
          selected: true,

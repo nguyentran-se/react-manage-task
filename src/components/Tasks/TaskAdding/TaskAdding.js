@@ -9,8 +9,9 @@ import {
 } from "@heroicons/react/outline";
 
 const TaskAdding = (props) => {
+   const { addTask } = props;
    const [selected, setSelected] = useState(false);
-
+   const [inputValue, setInputValue] = useState("");
    const inputClickHandler = (e) => {
       setSelected(true);
    };
@@ -37,14 +38,36 @@ const TaskAdding = (props) => {
    const wrapperRef = useRef(null);
    clickOutSideHandler(wrapperRef);
 
+   const inputChangedHandler = (e) => {
+      setInputValue(e.target.value);
+   };
+
+   const inputEnterHandler = (e) => {
+      if (e.keyCode === 13) {
+         addTask(inputValue);
+         setInputValue("");
+      }
+   };
+
    return (
       <section
          ref={wrapperRef}
          onClick={(e) => inputClickHandler(e)}
          className={classes.TaskAdding}>
          <div className={classes.TaskInput}>
-            <input type="text" placeholder="Click to quickly add a task" />
-            <div className={classes.IconWrapper}>
+            <input
+               type="text"
+               placeholder="Click to quickly add a task"
+               onChange={(e) => inputChangedHandler(e)}
+               onKeyUp={(e) => inputEnterHandler(e)}
+               value={inputValue}
+            />
+            <div
+               onClick={() => {
+                  addTask(inputValue);
+                  setInputValue("");
+               }}
+               className={classes.IconWrapper}>
                <ArrowUpIcon className={classes.Icon} />
             </div>
          </div>

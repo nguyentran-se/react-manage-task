@@ -1,27 +1,52 @@
 import React, { Component } from "react";
 import classes from "./TasksBuilder.css";
 import Tasks from "../../components/Tasks/Tasks";
-import Calendar from "../../components/Calendar/Calendar";
 import { connect } from "react-redux";
 import TaskAdding from "../../components/Tasks/TaskAdding/TaskAdding";
-
+import * as actionTypes from "../../store/actions";
+import { Route, Switch } from "react-router-dom";
+import WhiteBlock from "../../components/UI/WhiteBlock/WhiteBlock";
+import Calendar from "../../components/Calendar/Calendar";
 export class TasksBuilder extends Component {
    render() {
+      console.log(this.props.match.path);
       // const { today, tomorrow } = this.props.groups;
       // console.log(today);
       console.log(this.props.groups);
       return (
          <section className={classes.TasksBuilder}>
-            <div className={classes.TasksWrapper}>
-               <Tasks
-                  toggleTaskList={this.props.toggleTaskList}
-                  groups={this.props.groups}
+            <Switch>
+               <Route
+                  path={this.props.match.path + "/trash"}
+                  component={() => (
+                     <WhiteBlock>
+                        <p>TRASH</p>
+                     </WhiteBlock>
+                  )}
                />
-               <TaskAdding />
-            </div>
-            <div className={classes.CalendarWrapper}>
-               <Calendar />
-            </div>
+               <Route
+                  path={this.props.match.path}
+                  component={() => (
+                     <WhiteBlock>
+                        <Tasks
+                           toggleTaskList={this.props.toggleTaskList}
+                           groups={this.props.groups}
+                           deleteTask={this.props.deleteTask}
+                           activeTask={this.props.activeTask}
+                        />
+                        <TaskAdding addTask={this.props.addTask} />
+                     </WhiteBlock>
+                  )}
+               />
+            </Switch>
+            <Route
+               path={this.props.match.path + "/calendar"}
+               component={() => (
+                  <WhiteBlock>
+                     <Calendar />
+                  </WhiteBlock>
+               )}
+            />
          </section>
       );
    }
@@ -34,7 +59,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      toggleTaskList: (topic) => dispatch({ type: "TOGGLE_TASKLIST", topic }),
+      toggleTaskList: (topic) =>
+         dispatch({ type: actionTypes.TOGGLE_TASKLIST, topic }),
+      addTask: (value) => dispatch({ type: actionTypes.ADD_TASK, value }),
+      deleteTask: (deleteIndex) =>
+         dispatch({ type: actionTypes.DELETE_TASK, deleteIndex }),
    };
 };
 

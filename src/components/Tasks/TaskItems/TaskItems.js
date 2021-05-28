@@ -1,9 +1,10 @@
 import React from "react";
 import classes from "./TaskItems.css";
-import { BadgeCheckIcon } from "@heroicons/react/outline";
+import { BadgeCheckIcon, TrashIcon } from "@heroicons/react/outline";
 
-const TaskItems = ({ tasks, isSelected }) => {
+const TaskItems = ({ tasks, isSelected, deleteTask }) => {
    console.log(tasks);
+
    let transformedTasks = tasks.map((task, index) => (
       <div key={index} className={classes.ItemWrapper}>
          <div className={classes.Item}>
@@ -12,6 +13,10 @@ const TaskItems = ({ tasks, isSelected }) => {
                <h4>{task.title}</h4>
             </div>
             <span>{task.tag}</span>
+            <TrashIcon
+               onClick={() => deleteTask(index)}
+               className={classes.Trash}
+            />
          </div>
       </div>
    ));

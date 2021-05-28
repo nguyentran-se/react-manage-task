@@ -5,6 +5,7 @@
 .ItemWrapper {
    padding: 4px 10px;
    cursor: pointer;
+   position: relative;
 }
 .ItemWrapper:hover > .Item {
    background-color: var(--hover-nav-color);
@@ -37,4 +38,16 @@
    transform: translateY(1px);
    margin-right: 10px;
    color: var(--sidebar-icon-color);
+}
+
+.Trash {
+   width: 30px;
+   color: var(--sidebar-icon-color);
+   position: absolute;
+   top: 50%;
+   right: 20px;
+   transform: translateY(-50%);
+}
+.Trash:hover {
+   filter: brightness(1.1);
 }
