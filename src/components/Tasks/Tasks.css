@@ -7,6 +7,7 @@
    padding: 25px 20px 7px 24px;
    cursor: pointer;
    user-select: none;
+   color: var(--text-color);
 }
 
 .Header:hover {
@@ -14,7 +15,7 @@
 }
 
 .Header h3 {
-   font-size: 16px;
+   font-size: 18px;
    font-weight: var(--fw-high-level);
    text-transform: capitalize;
 }
@@ -32,6 +33,6 @@
    text-align: center;
    line-height: 24px;
    border-radius: 50%;
-   transform: translateY(-3px);
+   transform: translateY(-2px);
    font-size: 12px;
 }

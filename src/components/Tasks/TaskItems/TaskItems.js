@@ -2,22 +2,29 @@ import React from "react";
 import classes from "./TaskItems.css";
 import { BadgeCheckIcon } from "@heroicons/react/outline";
 
-const TaskItems = ({ tasks }) => {
+const TaskItems = ({ tasks, isSelected }) => {
    console.log(tasks);
-   let transformedTasks = tasks.map((task) => (
-      <div className={classes.TasksList}>
-         <div className={classes.ItemWrapper}>
-            <div className={classes.Item}>
-               <div className={classes.Content}>
-                  <BadgeCheckIcon className={classes.Icon} />
-                  <h4>{task.title}</h4>
-               </div>
-               <span>{task.tag}</span>
+   let transformedTasks = tasks.map((task, index) => (
+      <div key={index} className={classes.ItemWrapper}>
+         <div className={classes.Item}>
+            <div className={classes.Content}>
+               <BadgeCheckIcon className={classes.Icon} />
+               <h4>{task.title}</h4>
             </div>
+            <span>{task.tag}</span>
          </div>
       </div>
    ));
-   return transformedTasks;
+   return (
+      <div
+         style={
+            isSelected ? { height: `${54 * tasks.length}px` } : { height: "0" }
+         }
+         className={classes.TasksList}>
+         {transformedTasks}
+      </div>
+   );
+
    // return (
    //    <div className={classes.TasksList}>
    //       <div className={classes.ItemWrapper}>

@@ -6,6 +6,9 @@ const SideBar = (props) => {
    return (
       <section className={classes.SideBar}>
          <UserInfo />
+         {/* <div className={classes.ScrollShadow}>
+            <div className={classes.Shadow}></div>
+         </div> */}
          <NavItems />
       </section>
    );

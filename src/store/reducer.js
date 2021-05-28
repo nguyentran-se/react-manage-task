@@ -1,6 +1,7 @@
 const initialState = {
    groups: {
       today: {
+         isSelected: true,
          tasks: [
             {
                title: "testing tasks 1",
@@ -15,6 +16,7 @@ const initialState = {
          ],
       },
       tomorrow: {
+         isSelected: false,
          tasks: [
             {
                title: "tomorrow tasks 1",
@@ -31,8 +33,29 @@ const initialState = {
    },
 };
 
-const reducer = (state = initialState, actions) => {
-   switch (actions) {
+const reducer = (state = initialState, action) => {
+   const { type, topic } = action;
+   switch (type) {
+      case "TOGGLE_TASKLIST":
+         let updatedState = { ...state };
+         updatedState.groups = { ...state.groups };
+         updatedState.groups[topic] = { ...state.groups[topic] };
+         updatedState.groups[topic].isSelected =
+            !state.groups[topic].isSelected;
+         return {
+            ...state,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  isSelected: updatedState.groups.today.isSelected,
+               },
+               tomorrow: {
+                  ...state.groups.tomorrow,
+                  isSelected: updatedState.groups.tomorrow.isSelected,
+               },
+            },
+         };
       default:
          return state;
    }

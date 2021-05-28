@@ -3,7 +3,7 @@
    top: 200px;
    left: 40px;
    width: 900px;
-   height: 455px;
+   height: 520px;
    display: flex;
    align-items: stretch;
    justify-content: space-between;
@@ -13,5 +13,7 @@
    width: 430px;
    background-color: var(--bg-theme-color);
    border-radius: 10px;
+   display: flex;
+   flex-direction: column;
    /* padding: 26px 48px 14px 24px; */
 }

@@ -1,3 +1,7 @@
+.TasksList {
+   overflow: hidden;
+   transition: all linear 0.3s;
+}
 .ItemWrapper {
    padding: 4px 10px;
    cursor: pointer;

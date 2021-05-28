@@ -1,0 +1,109 @@
+.TaskAdding {
+   margin-top: auto;
+   position: relative;
+}
+
+.TaskInput {
+   display: flex;
+   align-items: center;
+   padding: 12px;
+   z-index: 10;
+   position: relative;
+   background-color: #fff;
+   border-radius: 0 0 20px 20px;
+}
+.TaskInput input {
+   outline: none;
+   border-radius: 20px;
+   padding: 10px;
+   border: 1px solid var(--sidebar-icon-color);
+   max-height: 40px;
+   width: calc(100% - 53px);
+   font-size: 14px;
+   transition: all linear 0.3s;
+}
+
+.TaskInput input:placeholder-shown {
+   font-size: 14px;
+}
+.IconWrapper {
+   width: 41px;
+   height: 41px;
+   border-radius: 50%;
+   position: relative;
+   border: 1px solid var(--sidebar-icon-color);
+   cursor: pointer;
+   transition: all linear 0.3s;
+   margin-left: auto;
+}
+.Icon {
+   position: absolute;
+   width: 18px;
+   color: var(--sidebar-icon-color);
+   border-radius: 50%;
+   border: 1px solild var(--sidebar-icon-color);
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   transition: all linear 0.3s;
+}
+.IconWrapper:hover {
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
+}
+.IconWrapper:hover > .Icon {
+   color: #fff;
+}
+.TaskInput input:active,
+.TaskInput input:hover,
+.TaskInput input:focus {
+   border-color: var(--primary-color);
+}
+.TaskInput input:focus ~ .IconWrapper {
+   background-color: var(--primary-color);
+   border-color: var(--primary-color);
+}
+.TaskInput input:focus ~ .IconWrapper .Icon {
+   color: #fff;
+}
+.PanelWrapper.ShowPanel {
+   transform: translateY(0);
+   z-index: 1;
+}
+.PanelWrapper {
+   padding: 5px 10px 0;
+   width: 100%;
+   position: absolute;
+   top: -37px;
+   left: 0;
+   box-shadow: var(--shadow-adding);
+   transform: translateY(99%);
+   /* z-index: -1; */
+   transition: all linear 0.3s;
+}
+
+.Panel {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+}
+.Panel div {
+   width: calc(25% - 7.5px);
+   text-align: center;
+   padding: 5px 0;
+   cursor: pointer;
+}
+.PanelIcon {
+   width: 24px;
+   color: var(--text-color);
+   opacity: 0.7;
+}
+.Panel div:hover > .PanelIcon {
+   color: var(--primary-color);
+}
+.Separate {
+   width: 1px;
+   background-color: var(--sidebar-icon-color);
+   height: 26px;
+}
