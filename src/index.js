@@ -4,10 +4,21 @@ import "./index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 import { BrowserRouter } from "react-router-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./store/reducer";
-const store = createStore(reducer);
+import taskReducer from "./store/reducers/taskReducer";
+import thunk from "redux-thunk";
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+   tasks: taskReducer,
+});
+
+const store = createStore(
+   rootReducer,
+   composeEnhancers(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
    <Provider store={store}>

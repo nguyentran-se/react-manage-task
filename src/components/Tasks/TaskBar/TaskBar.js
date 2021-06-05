@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./TasksBar.css";
+import classes from "./TaskBar.css";
 import {
    XCircleIcon,
    SwitchVerticalIcon,

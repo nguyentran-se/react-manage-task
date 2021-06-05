@@ -8,3 +8,11 @@
    align-items: stretch;
    justify-content: space-between;
 }
+.Wrapper {
+   width: 430px;
+   background-color: var(--bg-theme-color);
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   /* padding: 26px 48px 14px 24px; */
+}

@@ -2,7 +2,7 @@ import React from "react";
 import SideBar from "../../components/Navigation/SideBar/SideBar";
 import classes from "./Layout.css";
 import Header from "../../components/Header/Header";
-import TasksBar from "../../containers/TasksBar/TasksBar";
+import TaskBar from "../../components/Tasks/TaskBar/TaskBar";
 
 const layout = (props) => {
    return (
@@ -10,7 +10,7 @@ const layout = (props) => {
          <SideBar />
          <div className={classes.Main}>
             <Header />
-            <TasksBar />
+            <TaskBar />
             <main>{props.children}</main>
          </div>
       </section>

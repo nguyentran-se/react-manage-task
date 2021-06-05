@@ -23,7 +23,15 @@ const TaskItems = ({ tasks, isSelected, deleteTask }) => {
    return (
       <div
          style={
-            isSelected ? { height: `${54 * tasks.length}px` } : { height: "0" }
+            isSelected
+               ? {
+                    height: `${54 * tasks.length}px`,
+                    visibility: "visible",
+                 }
+               : {
+                    height: "0",
+                    visibility: "hidden",
+                 }
          }
          className={classes.TasksList}>
          {transformedTasks}

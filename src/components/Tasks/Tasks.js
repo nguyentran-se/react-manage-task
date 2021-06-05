@@ -11,22 +11,16 @@ const Tasks = ({ groups, toggleTaskList, deleteTask, activeTask }) => {
    console.log(topics);
    let transfromedGroups = topics.map((topic) => (
       <div key={topic} className={classes.Tasks}>
-         <div className={classes.Today}>
-            <div
-               onClick={() => toggleTaskList(topic)}
-               className={classes.Header}>
-               <h3>{topic}</h3>
-               <div className={classes.Counter}>
-                  {groups[topic].tasks.length}
-               </div>
-            </div>
-            <TaskItems
-               isSelected={groups[topic].isSelected}
-               tasks={groups[topic].tasks}
-               deleteTask={deleteTask}
-               // activeTask={activeTask}
-            />
+         <div onClick={() => toggleTaskList(topic)} className={classes.Header}>
+            <h3>{topic}</h3>
+            <div className={classes.Counter}>{groups[topic].tasks.length}</div>
          </div>
+         <TaskItems
+            isSelected={groups[topic].isSelected}
+            tasks={groups[topic].tasks}
+            deleteTask={deleteTask}
+            // activeTask={activeTask}
+         />
       </div>
    ));
    return transfromedGroups;
