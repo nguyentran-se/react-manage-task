@@ -1,28 +1,16 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
+   loading: false,
    groups: {
       today: {
          isSelected: true,
-         tasks: [
-            {
-               title: "testing tasks 1",
-               isCompleted: false,
-               tag: "person",
-               isActive: false,
-            },
-            {
-               title: "testing tasks 2",
-               isCompleted: false,
-               tag: "person",
-               isActive: false,
-            },
-         ],
+         tasks: [],
       },
    },
 };
 
 const reducer = (state = initialState, action) => {
-   const { type, topic, value, deleteIndex } = action;
+   const { type, topic, value, deleteIndex, checkIndex, tasks } = action;
    switch (type) {
       case actionTypes.TOGGLE_TASKLIST:
          let updatedState = { ...state };
@@ -70,6 +58,37 @@ const reducer = (state = initialState, action) => {
                },
             },
          };
+      case actionTypes.TOGGLE_CHECK:
+         console.log(checkIndex);
+         copy = [...state.groups.today.tasks];
+         copy[checkIndex] = { ...state.groups.today.tasks[checkIndex] };
+         copy[checkIndex].isCompleted = !copy[checkIndex].isCompleted;
+         return {
+            ...state,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: copy,
+               },
+            },
+         };
+      case actionTypes.FETCH_TASKS_START:
+         return { ...state, loading: true };
+      case actionTypes.FETCH_TASKS_SUCCESS:
+         return {
+            ...state,
+            loading: false,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: tasks,
+               },
+            },
+         };
+      case actionTypes.FETCH_TASKS_FAILED:
+         return { ...state, loading: false };
       default:
          return state;
    }

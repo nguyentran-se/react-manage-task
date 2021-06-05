@@ -27,6 +27,7 @@
    --tag-color: #f9d21f;
    --bg-counter-color: #9b9b9b;
    --shadow-adding: 0px -4px 10px -3px var(--sidebar-icon-color);
+   --bg-input-color: #fff;
 }
 /* Dark mode */
 .App.DarkMode {
@@ -41,4 +42,5 @@
    --tag-color: #f9d21f;
    --bg-counter-color: #a1a1a1;
    --shadow-adding: 0px -4px 10px -3px #030303;
+   --bg-input-color: #424242;
 }

@@ -1,2 +1,8 @@
 //Task action
-export { addTask, toggleTaskList, deleteTask } from "./taskAction";
+export {
+   addTask,
+   toggleTaskList,
+   deleteTask,
+   toggleCheck,
+   fetchTasks,
+} from "./taskAction";

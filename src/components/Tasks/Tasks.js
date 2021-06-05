@@ -2,7 +2,8 @@ import React from "react";
 import TaskItems from "./TaskItems/TaskItems";
 import classes from "./Tasks.css";
 
-const Tasks = ({ groups, toggleTaskList, deleteTask, activeTask }) => {
+const Tasks = (props) => {
+   const { groups, toggleTaskList, activeTask } = props;
    console.log(groups);
    let topics = [];
    for (const key in groups) {
@@ -18,7 +19,6 @@ const Tasks = ({ groups, toggleTaskList, deleteTask, activeTask }) => {
          <TaskItems
             isSelected={groups[topic].isSelected}
             tasks={groups[topic].tasks}
-            deleteTask={deleteTask}
             // activeTask={activeTask}
          />
       </div>

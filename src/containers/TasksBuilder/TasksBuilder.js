@@ -4,19 +4,25 @@ import Tasks from "../../components/Tasks/Tasks";
 import { connect } from "react-redux";
 import TaskAdding from "../../components/Tasks/TaskAdding/TaskAdding";
 import * as actionCreators from "../../store/actions/index";
-import { Route, Switch } from "react-router-dom";
+// import { Route, Switch } from "react-router-dom";
 import WhiteBlock from "../../components/UI/WhiteBlock/WhiteBlock";
 import TaskDetail from "../../components/Tasks/TaskDetail/TaskDetail";
+// import axios from "../../axios-tasks";
+import Spinner from "../../components/UI/Spinner/Spinner";
+import Aux from "../../hoc/Auxilary/Auxilary";
 export class TasksBuilder extends Component {
+   componentDidMount() {
+      this.props.fetchTasks();
+   }
+
    render() {
-      console.log(this.props.groups);
       return (
          <section className={classes.TasksBuilder}>
             <WhiteBlock>
+               {this.props.loading && <Spinner />}
                <Tasks
                   toggleTaskList={this.props.toggleTaskList}
                   groups={this.props.groups}
-                  deleteTask={this.props.deleteTask}
                   activeTask={this.props.activeTask}
                />
                <TaskAdding addTask={this.props.addTask} />
@@ -31,6 +37,7 @@ export class TasksBuilder extends Component {
 const mapStateToProps = (state) => {
    return {
       groups: state.tasks.groups,
+      loading: state.tasks.loading,
    };
 };
 
@@ -38,8 +45,7 @@ const mapDispatchToProps = (dispatch) => {
    return {
       toggleTaskList: (topic) => dispatch(actionCreators.toggleTaskList(topic)),
       addTask: (value) => dispatch(actionCreators.addTask(value)),
-      deleteTask: (deleteIndex) =>
-         dispatch(actionCreators.deleteTask(deleteIndex)),
+      fetchTasks: () => dispatch(actionCreators.fetchTasks()),
    };
 };
 

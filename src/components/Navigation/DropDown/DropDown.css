@@ -21,6 +21,9 @@
 .DropDown:first-child .DropHeader:hover {
    background-color: var(--hover-nav-color);
 }
+.DropDown:first-child .DropHeader a {
+   color: var(--text-color);
+}
 .DropHeader {
    display: flex;
    align-items: center;
