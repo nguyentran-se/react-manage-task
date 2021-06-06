@@ -5,4 +5,5 @@ export {
    deleteTask,
    toggleCheck,
    fetchTasks,
+   pushTasks,
 } from "./taskAction";

@@ -1,3 +1,16 @@
+.Tasks {
+   max-height: 385px;
+   overflow-y: auto;
+   margin-right: 1px;
+}
+.Tasks::-webkit-scrollbar {
+   width: 6px;
+   background-color: var(--transparent-color);
+}
+.Tasks::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: var(--sidebar-icon-color);
+}
 .Header {
    display: flex;
    justify-content: space-between;

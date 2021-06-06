@@ -24,6 +24,10 @@
    width: 24px;
    color: var(--text-color);
    transition: all linear 0.3s;
+   transform: rotateX(180deg);
+}
+.Icon.IconLoading {
+   animation: iconRotate 0.5s ease-out forwards;
 }
 .Item:hover > .Icon {
    color: var(--primary-color);
@@ -33,4 +37,10 @@
    background-color: #d8d8d8;
    height: 24px;
    margin: 0 10px 0 16px;
+}
+
+@keyframes iconRotate {
+   to {
+      transform: rotateY(180deg);
+   }
 }

@@ -20,22 +20,6 @@ class NavItems extends Component {
          selected: true,
          list: ["priority"],
       },
-      test: {
-         selected: true,
-         list: ["test"],
-      },
-      test2: {
-         selected: true,
-         list: ["test2", "test3"],
-      },
-      test3: {
-         selected: true,
-         list: ["test2", "test3"],
-      },
-      test4: {
-         selected: true,
-         list: ["test2", "test3"],
-      },
    };
 
    showDropDown = (dropType) => {

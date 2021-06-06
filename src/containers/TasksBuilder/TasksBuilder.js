@@ -36,8 +36,8 @@ export class TasksBuilder extends Component {
 }
 const mapStateToProps = (state) => {
    return {
-      groups: state.tasks.groups,
-      loading: state.tasks.loading,
+      groups: state.tsk.groups,
+      loading: state.tsk.loading,
    };
 };
 

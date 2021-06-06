@@ -83,6 +83,7 @@
    transform: translateY(99%);
    /* z-index: -1; */
    transition: all linear 0.3s;
+   background-color: #fff;
 }
 
 .Panel {

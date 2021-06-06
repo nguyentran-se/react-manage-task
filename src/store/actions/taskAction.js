@@ -32,13 +32,37 @@ export const fetchTasks = () => {
    return (dispatch) => {
       dispatch(fetchTasksStart());
       axios
-         .get("today/tasks.json")
+         .get("groups/today/tasks.json")
          .then((response) => {
             console.log(response.data);
             dispatch(fetchTasksSuccess(response.data));
          })
          .catch((err) => {
             dispatch(fetchTasksFailed(err));
+         });
+   };
+};
+
+const pushTaskStart = () => {
+   return { type: actionTypes.PUSH_TASK_START };
+};
+const pushTaskSuccess = () => {
+   return { type: actionTypes.PUSH_TASK_SUCCESS };
+};
+const pushTaskFailed = (err) => {
+   return { type: actionTypes.PUSH_TASK_FAILED, err };
+};
+
+export const pushTasks = (data) => {
+   return (dispatch) => {
+      dispatch(pushTaskStart());
+      axios
+         .put("groups.json", data)
+         .then((response) => {
+            dispatch(pushTaskSuccess());
+         })
+         .catch((err) => {
+            dispatch(pushTaskFailed());
          });
    };
 };

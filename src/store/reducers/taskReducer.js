@@ -1,8 +1,13 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
    loading: false,
+   iconLoading: false,
    groups: {
       today: {
+         isSelected: true,
+         tasks: [],
+      },
+      tomorrow: {
          isSelected: true,
          tasks: [],
       },
@@ -83,12 +88,18 @@ const reducer = (state = initialState, action) => {
                ...state.groups,
                today: {
                   ...state.groups.today,
-                  tasks: tasks,
+                  tasks: tasks || [],
                },
             },
          };
       case actionTypes.FETCH_TASKS_FAILED:
          return { ...state, loading: false };
+      case actionTypes.PUSH_TASK_START:
+         return { ...state, iconLoading: true };
+      case actionTypes.PUSH_TASK_SUCCESS:
+         return { ...state, iconLoading: false };
+      case actionTypes.PUSH_TASK_FAILED:
+         return { ...state, iconLoading: false };
       default:
          return state;
    }

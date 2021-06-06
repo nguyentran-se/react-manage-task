@@ -11,7 +11,7 @@ const Tasks = (props) => {
    }
    console.log(topics);
    let transfromedGroups = topics.map((topic) => (
-      <div key={topic} className={classes.Tasks}>
+      <div key={topic}>
          <div onClick={() => toggleTaskList(topic)} className={classes.Header}>
             <h3>{topic}</h3>
             <div className={classes.Counter}>{groups[topic].tasks.length}</div>
@@ -23,7 +23,7 @@ const Tasks = (props) => {
          />
       </div>
    ));
-   return transfromedGroups;
+   return <div className={classes.Tasks}>{transfromedGroups}</div>;
 };
 
 export default Tasks;
