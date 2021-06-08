@@ -5,7 +5,6 @@ import TasksBuilder from "./containers/TasksBuilder/TasksBuilder";
 import { Redirect, Route, Switch } from "react-router-dom";
 class App extends Component {
    render() {
-      console.log(this.props);
       return (
          <div className={`${classes.App} ${classes.LightMode}`}>
             <Layout>

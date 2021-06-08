@@ -30,8 +30,6 @@ class NavItems extends Component {
    };
 
    render() {
-      console.log(this.state);
-      console.log(this.state.calendar.list.length);
       return (
          <nav className={classes.Nav}>
             <ul>

@@ -29,6 +29,13 @@
 .Icon.IconLoading {
    animation: iconRotate 0.5s ease-out forwards;
 }
+.Icon.Disabled {
+   color: var(--sidebar-icon-color);
+   pointer-events: none;
+}
+.Item:hover > .Icon.Disabled {
+   color: var(--sidebar-icon-color);
+}
 .Item:hover > .Icon {
    color: var(--primary-color);
 }

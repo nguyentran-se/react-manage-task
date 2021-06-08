@@ -1,45 +1,44 @@
 import React from "react";
 import classes from "./TaskItems.css";
-import { BadgeCheckIcon, TrashIcon } from "@heroicons/react/outline";
+import { TrashIcon } from "@heroicons/react/outline";
 import { CheckCircleIcon } from "@heroicons/react/solid";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 
 const TaskItems = (props) => {
-   const { tasks, isSelected, deleteTask, toggleCheck } = props;
-   console.log(tasks);
-   // const itemClasses = [classes.ItemWrapper];
-
-   let transformedTasks = tasks.map((task, index) => (
-      <div
-         key={index}
-         className={
-            task.isCompleted
-               ? [classes.ItemWrapper, classes.Completed].join(" ")
-               : classes.ItemWrapper
-         }>
-         <div className={classes.Item}>
-            <div className={classes.Content}>
-               <CheckCircleIcon
-                  className={classes.Icon}
-                  onClick={() => toggleCheck(index)}
+   const { tasks, isSelected, deleteTask, toggleCheck, activeItem } = props;
+   let transformedTasks = tasks.map((task, index) => {
+      const itemClasses = [classes.ItemWrapper];
+      if (task.isCompleted) itemClasses.push(classes.Completed);
+      if (task.isActive) itemClasses.push(classes.Active);
+      return (
+         <div
+            key={index}
+            className={itemClasses.join(" ")}
+            onClick={() => activeItem(index)}>
+            <div className={classes.Item}>
+               <div className={classes.Content}>
+                  <CheckCircleIcon
+                     className={classes.Icon}
+                     onClick={(event) => toggleCheck(event, index)}
+                  />
+                  <h4>{task.title}</h4>
+               </div>
+               <span>{task.tag}</span>
+               <TrashIcon
+                  onClick={() => deleteTask(index)}
+                  className={classes.Trash}
                />
-               <h4>{task.title}</h4>
             </div>
-            <span>{task.tag}</span>
-            <TrashIcon
-               onClick={() => deleteTask(index)}
-               className={classes.Trash}
-            />
          </div>
-      </div>
-   ));
+      );
+   });
    return (
       <div
          style={
             isSelected
                ? {
-                    height: `${54 * tasks.length}px`,
+                    height: `${56 * tasks.length}px`,
                     visibility: "visible",
                  }
                : {
@@ -52,14 +51,16 @@ const TaskItems = (props) => {
       </div>
    );
 };
-const mapStateToProps = (state) => {
-   return {};
-};
+// const mapStateToProps = (state) => {
+//    return {};
+// };
 
 const mapDispatchToProps = (dispatch) => {
    return {
       deleteTask: (index) => dispatch(actionCreators.deleteTask(index)),
-      toggleCheck: (index) => dispatch(actionCreators.toggleCheck(index)),
+      toggleCheck: (event, index) =>
+         dispatch(actionCreators.toggleCheck(event, index)),
+      activeItem: (index) => dispatch(actionCreators.activeTask(index)),
    };
 };
 

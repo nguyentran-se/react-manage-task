@@ -9,8 +9,6 @@ function DropDown({ dropDown, showDropDown }) {
    for (const dropItem in dropDown) {
       dropDownArray.push(dropItem);
    }
-   console.log(dropDown);
-   console.log(dropDownArray);
 
    // if (.howDrop) classDrop.push(classes.ShowDrop);
 

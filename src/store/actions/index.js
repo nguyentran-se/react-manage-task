@@ -6,4 +6,6 @@ export {
    toggleCheck,
    fetchTasks,
    pushTasks,
+   activeTask,
+   editTitleTask,
 } from "./taskAction";

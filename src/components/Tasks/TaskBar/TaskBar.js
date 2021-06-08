@@ -10,9 +10,16 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 
 const TasksBar = (props) => {
-   const { pushTasks, groups, iconLoading } = props;
+   const { pushTasks, groups, iconLoading, isUpdated } = props;
    const iconClasses = [classes.Icon];
    if (iconLoading) iconClasses.push(classes.IconLoading);
+   if (!isUpdated) iconClasses.push(classes.Disabled);
+   // if (!isUpdated) {
+   //    setTimeout(() => {
+   //       iconClasses.push(classes.Disabled);
+   //    }, 3000);
+   // }
+
    return (
       <section className={classes.TasksBar}>
          <div className={classes.TasksBarItems}>
@@ -30,7 +37,8 @@ const TasksBar = (props) => {
                <SwitchVerticalIcon className={classes.Icon} />
             </div>
             <div
-               onClick={() => pushTasks(groups)}
+               onClick={() => isUpdated && pushTasks(groups)}
+               style={{ cursor: !isUpdated && "not-allowed" }}
                className={classes.Item}
                title="Save tasks">
                <RefreshIcon className={iconClasses.join(" ")} />
@@ -46,6 +54,7 @@ const mapStateToProps = (state) => {
    return {
       groups: state.tsk.groups,
       iconLoading: state.tsk.iconLoading,
+      isUpdated: state.tsk.isUpdated,
    };
 };
 

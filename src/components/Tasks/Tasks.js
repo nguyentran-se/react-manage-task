@@ -3,13 +3,11 @@ import TaskItems from "./TaskItems/TaskItems";
 import classes from "./Tasks.css";
 
 const Tasks = (props) => {
-   const { groups, toggleTaskList, activeTask } = props;
-   console.log(groups);
+   const { groups, toggleTaskList } = props;
    let topics = [];
    for (const key in groups) {
       topics.push(key);
    }
-   console.log(topics);
    let transfromedGroups = topics.map((topic) => (
       <div key={topic}>
          <div onClick={() => toggleTaskList(topic)} className={classes.Header}>

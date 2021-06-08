@@ -2,6 +2,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
    loading: false,
    iconLoading: false,
+   isUpdated: false,
    groups: {
       today: {
          isSelected: true,
@@ -15,7 +16,17 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-   const { type, topic, value, deleteIndex, checkIndex, tasks } = action;
+   const {
+      type,
+      topic,
+      value,
+      deleteIndex,
+      checkIndex,
+      tasks,
+      activeIndex,
+      editIndex,
+      editValue,
+   } = action;
    switch (type) {
       case actionTypes.TOGGLE_TASKLIST:
          let updatedState = { ...state };
@@ -42,6 +53,7 @@ const reducer = (state = initialState, action) => {
          };
          return {
             ...state,
+            isUpdated: true,
             groups: {
                ...state.groups,
                today: {
@@ -55,6 +67,7 @@ const reducer = (state = initialState, action) => {
          copy.splice(deleteIndex, 1);
          return {
             ...state,
+            isUpdated: true,
             groups: {
                ...state.groups,
                today: {
@@ -64,12 +77,13 @@ const reducer = (state = initialState, action) => {
             },
          };
       case actionTypes.TOGGLE_CHECK:
-         console.log(checkIndex);
          copy = [...state.groups.today.tasks];
          copy[checkIndex] = { ...state.groups.today.tasks[checkIndex] };
          copy[checkIndex].isCompleted = !copy[checkIndex].isCompleted;
+         copy[checkIndex].isActive = false;
          return {
             ...state,
+            isUpdated: true,
             groups: {
                ...state.groups,
                today: {
@@ -95,11 +109,43 @@ const reducer = (state = initialState, action) => {
       case actionTypes.FETCH_TASKS_FAILED:
          return { ...state, loading: false };
       case actionTypes.PUSH_TASK_START:
-         return { ...state, iconLoading: true };
+         return { ...state, iconLoading: true, isUpdated: false };
       case actionTypes.PUSH_TASK_SUCCESS:
-         return { ...state, iconLoading: false };
+         return { ...state, iconLoading: false, isUpdated: false };
       case actionTypes.PUSH_TASK_FAILED:
-         return { ...state, iconLoading: false };
+         return { ...state, iconLoading: false, isUpdated: false };
+      case actionTypes.ACTIVE_TASK:
+         copy = [...state.groups.today.tasks].map((ele) => {
+            return { ...ele, isActive: false };
+         });
+         if (copy[activeIndex] && !copy[activeIndex].isCompleted)
+            copy[activeIndex].isActive = true;
+         return {
+            ...state,
+            isUpdated: true,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: copy,
+               },
+            },
+         };
+      case actionTypes.EDIT_TITLE_TASK:
+         copy = [...state.groups.today.tasks];
+         copy[editIndex] = { ...state.groups.today.tasks[editIndex] };
+         copy[editIndex].title = editValue;
+         return {
+            ...state,
+            isUpdated: true,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: copy,
+               },
+            },
+         };
       default:
          return state;
    }

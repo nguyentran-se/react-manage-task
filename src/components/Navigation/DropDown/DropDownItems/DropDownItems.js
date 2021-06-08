@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import classes from "./DropDownItems.css";
 
 function DropDownItem(props) {

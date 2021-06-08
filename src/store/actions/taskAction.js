@@ -13,7 +13,8 @@ export const deleteTask = (deleteIndex) => {
    return { type: actionTypes.DELETE_TASK, deleteIndex };
 };
 
-export const toggleCheck = (checkIndex) => {
+export const toggleCheck = (event, checkIndex) => {
+   event.stopPropagation();
    return { type: actionTypes.TOGGLE_CHECK, checkIndex };
 };
 
@@ -34,7 +35,7 @@ export const fetchTasks = () => {
       axios
          .get("groups/today/tasks.json")
          .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
             dispatch(fetchTasksSuccess(response.data));
          })
          .catch((err) => {
@@ -65,4 +66,12 @@ export const pushTasks = (data) => {
             dispatch(pushTaskFailed());
          });
    };
+};
+
+export const activeTask = (activeIndex) => {
+   return { type: actionTypes.ACTIVE_TASK, activeIndex };
+};
+
+export const editTitleTask = (editIndex, editValue) => {
+   return { type: actionTypes.EDIT_TITLE_TASK, editIndex, editValue };
 };

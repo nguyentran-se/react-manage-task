@@ -1,8 +1,8 @@
 export const TOGGLE_TASKLIST = "TOGGLE_TASKLIST";
 export const ADD_TASK = "ADD_TASK";
 export const DELETE_TASK = "DELETE_TASK";
-export const ACTIVE_TASK = "ACTIVE_TASK";
 export const TOGGLE_CHECK = "TOGGLE_CHECK";
+export const ACTIVE_TASK = "ACTIVE_TASK";
 
 export const FETCH_TASKS_START = "FETCH_TASKS_START";
 export const FETCH_TASKS_SUCCESS = "FETCH_TASKS_SUCCESS";
@@ -11,3 +11,5 @@ export const FETCH_TASKS_FAILED = "FETCH_TASKS_FAILED";
 export const PUSH_TASK_START = "PUSH_TASK_START";
 export const PUSH_TASK_SUCCESS = "PUSH_TASK_SUCCESS";
 export const PUSH_TASK_FAILED = "PUSH_TASK_FAILED";
+
+export const EDIT_TITLE_TASK = "EDIT_TITLE_TASK";
