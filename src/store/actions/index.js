@@ -8,4 +8,5 @@ export {
    pushTasks,
    activeTask,
    editTitleTask,
+   clearCompleted,
 } from "./taskAction";

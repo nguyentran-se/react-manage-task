@@ -15,6 +15,7 @@
 .TasksBarItems h3 {
    font-size: 20px;
    color: var(--text-color);
+   user-select: none;
 }
 .Item {
    cursor: pointer;

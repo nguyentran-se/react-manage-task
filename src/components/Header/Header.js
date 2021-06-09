@@ -1,6 +1,11 @@
 import React from "react";
-import { SearchIcon } from "@heroicons/react/solid";
-import { CogIcon, CubeIcon, AcademicCapIcon } from "@heroicons/react/outline";
+import {} from "@heroicons/react/solid";
+import {
+   CogIcon,
+   MailIcon,
+   InformationCircleIcon,
+   SearchIcon,
+} from "@heroicons/react/outline";
 import classes from "./Header.css";
 import Button from "../UI/Button/Button";
 
@@ -12,10 +17,10 @@ const Header = (props) => {
                <CogIcon className={classes.Icon} />
             </div>
             <div className={classes.Item}>
-               <AcademicCapIcon className={classes.Icon} />
+               <MailIcon className={classes.Icon} />
             </div>
             <div className={classes.Item}>
-               <CubeIcon className={classes.Icon} />
+               <InformationCircleIcon className={classes.Icon} />
             </div>
             <div className={classes.Item}>
                <SearchIcon className={classes.Icon} />

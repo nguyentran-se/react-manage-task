@@ -75,3 +75,7 @@ export const activeTask = (activeIndex) => {
 export const editTitleTask = (editIndex, editValue) => {
    return { type: actionTypes.EDIT_TITLE_TASK, editIndex, editValue };
 };
+
+export const clearCompleted = () => {
+   return { type: actionTypes.CLEAR_COMPLETED };
+};

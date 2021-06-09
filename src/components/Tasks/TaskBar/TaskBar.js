@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 
 const TasksBar = (props) => {
-   const { pushTasks, groups, iconLoading, isUpdated } = props;
+   const { pushTasks, groups, iconLoading, isUpdated, clearCompleted } = props;
    const iconClasses = [classes.Icon];
    if (iconLoading) iconClasses.push(classes.IconLoading);
    if (!isUpdated) iconClasses.push(classes.Disabled);
@@ -19,7 +19,7 @@ const TasksBar = (props) => {
    //       iconClasses.push(classes.Disabled);
    //    }, 3000);
    // }
-
+   const hasCompleted = groups.today.tasks.some((task) => task.isCompleted);
    return (
       <section className={classes.TasksBar}>
          <div className={classes.TasksBarItems}>
@@ -30,17 +30,27 @@ const TasksBar = (props) => {
                </span>
             </h3>
             <div className={classes.Separate}></div>
-            <div className={classes.Item} title="Clear">
-               <XCircleIcon className={classes.Icon} />
+            <div
+               title="Clear"
+               className={classes.Item}
+               onClick={() => clearCompleted()}
+               style={{ cursor: !hasCompleted && "not-allowed" }}>
+               <XCircleIcon
+                  className={
+                     hasCompleted
+                        ? classes.Icon
+                        : `${classes.Icon} ${classes.Disabled}`
+                  }
+               />
             </div>
             <div className={classes.Item} title="Sort">
                <SwitchVerticalIcon className={classes.Icon} />
             </div>
             <div
-               onClick={() => isUpdated && pushTasks(groups)}
-               style={{ cursor: !isUpdated && "not-allowed" }}
+               title="Save tasks"
                className={classes.Item}
-               title="Save tasks">
+               onClick={() => isUpdated && pushTasks(groups)}
+               style={{ cursor: !isUpdated && "not-allowed" }}>
                <RefreshIcon className={iconClasses.join(" ")} />
             </div>
             {/* <div className={classes.Item}>
@@ -61,6 +71,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
    return {
       pushTasks: (groups) => dispatch(actionCreators.pushTasks(groups)),
+      clearCompleted: () => dispatch(actionCreators.clearCompleted()),
    };
 };
 

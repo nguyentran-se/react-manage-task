@@ -45,12 +45,22 @@ const reducer = (state = initialState, action) => {
             },
          };
       case actionTypes.ADD_TASK:
+         let copy = state.groups.today.tasks.slice();
          const task = {
             title: value,
             tag: "Personal",
             isCompleted: false,
             isActive: false,
+            prevIndex: 0,
          };
+         // thêm task vào đầu mảng
+         // gắn index hiện tại trong mảng để return về vị trí khi
+         // uncompleted và completed
+         copy.unshift(task);
+         let attachIndex = copy.map((ele, index) => {
+            return { ...ele, prevIndex: index };
+         });
+
          return {
             ...state,
             isUpdated: true,
@@ -58,12 +68,13 @@ const reducer = (state = initialState, action) => {
                ...state.groups,
                today: {
                   ...state.groups.today,
-                  tasks: state.groups.today.tasks.concat(task),
+                  // tasks: state.groups.today.tasks.concat(task),
+                  tasks: attachIndex,
                },
             },
          };
       case actionTypes.DELETE_TASK:
-         let copy = state.groups.today.tasks.slice();
+         copy = state.groups.today.tasks.slice();
          copy.splice(deleteIndex, 1);
          return {
             ...state,
@@ -80,7 +91,19 @@ const reducer = (state = initialState, action) => {
          copy = [...state.groups.today.tasks];
          copy[checkIndex] = { ...state.groups.today.tasks[checkIndex] };
          copy[checkIndex].isCompleted = !copy[checkIndex].isCompleted;
-         copy[checkIndex].isActive = false;
+         // sắp xếp array theo uncompleted
+         // và completed dựa vào prevIndex
+         let completedFilter = copy.filter((ele) => ele.isCompleted);
+         let sortUncompletedFilter = copy
+            .filter((ele) => !ele.isCompleted)
+            .sort((a, b) =>
+               a.prevIndex > b.prevIndex
+                  ? 1
+                  : b.prevIndex > a.prevIndex
+                  ? -1
+                  : 0
+            );
+         copy = [...sortUncompletedFilter, ...completedFilter];
          return {
             ...state,
             isUpdated: true,
@@ -143,6 +166,20 @@ const reducer = (state = initialState, action) => {
                today: {
                   ...state.groups.today,
                   tasks: copy,
+               },
+            },
+         };
+      case actionTypes.CLEAR_COMPLETED:
+         return {
+            ...state,
+            isUpdated: true,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: state.groups.today.tasks.filter(
+                     (task) => !task.isCompleted
+                  ),
                },
             },
          };

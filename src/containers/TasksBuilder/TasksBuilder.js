@@ -4,7 +4,7 @@ import Tasks from "../../components/Tasks/Tasks";
 import { connect } from "react-redux";
 import TaskAdding from "../../components/Tasks/TaskAdding/TaskAdding";
 import * as actionCreators from "../../store/actions/index";
-// import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Prompt } from "react-router-dom";
 import WhiteBlock from "../../components/UI/WhiteBlock/WhiteBlock";
 import TaskDetail from "../../components/Tasks/TaskDetail/TaskDetail";
 // import axios from "../../axios-tasks";
@@ -14,10 +14,20 @@ export class TasksBuilder extends Component {
    componentDidMount() {
       this.props.fetchTasks();
    }
+   componentDidUpdate() {
+      if (this.props.isUpdated)
+         window.onbeforeunload = () => "You have unsaved changes";
+      else window.onbeforeunload = undefined;
+   }
 
    render() {
       return (
          <section className={classes.TasksBuilder}>
+            {/* <Prompt
+               //Block route when have unsaved changes
+               when={this.props.isUpdated}
+               message="You have not save tasks"
+            /> */}
             <WhiteBlock>
                {this.props.loading && <Spinner />}
                <Tasks
@@ -38,6 +48,7 @@ const mapStateToProps = (state) => {
    return {
       groups: state.tsk.groups,
       loading: state.tsk.loading,
+      isUpdated: state.tsk.isUpdated,
    };
 };
 
