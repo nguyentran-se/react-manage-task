@@ -1,0 +1,137 @@
+.Icon {
+   position: relative;
+   display: inline-block;
+   width: 8em;
+   height: 8em;
+   font-size: 1em; /* control icon size here */
+}
+.Cloud {
+   position: absolute;
+   z-index: 1;
+   top: 50%;
+   left: 50%;
+   width: 3.6875em;
+   height: 3.6875em;
+   margin: -1.84375em;
+   background: var(--bg-theme-color);
+   border-radius: 50%;
+   box-shadow: -2.1875em 0.6875em 0 -0.6875em var(--bg-theme-color),
+      2.0625em 0.9375em 0 -0.9375em var(--bg-theme-color),
+      0 0 0 0.375em var(--sun-border),
+      -2.1875em 0.6875em 0 -0.3125em var(--sun-border),
+      2.0625em 0.9375em 0 -0.5625em var(--sun-border);
+   transition: all linear 0.3s;
+}
+.Cloud:after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   left: -0.5em;
+   display: block;
+   width: 4.5625em;
+   height: 1em;
+   background: var(--bg-theme-color);
+   box-shadow: 0 0.4375em 0 -0.0625em var(--sun-border);
+   transition: all linear 0.3s;
+}
+
+.Cloud:nth-child(2) {
+   z-index: 0;
+   background: #fff;
+   box-shadow: -2.1875em 0.6875em 0 -0.6875em #fff,
+      2.0625em 0.9375em 0 -0.9375em #fff, 0 0 0 0.375em #fff,
+      -2.1875em 0.6875em 0 -0.3125em #fff, 2.0625em 0.9375em 0 -0.5625em #fff;
+   opacity: 0.3;
+   transform: scale(0.5) translate(6em, -3em);
+   animation: cloud 4s linear infinite;
+   visibility: hidden;
+   opacity: 0;
+   transition: all linear 0.3s;
+}
+.Cloud:nth-child(2):after {
+   background: #fff;
+   box-shadow: 0 0.4375em 0 -0.0625em #fff;
+   visibility: hidden;
+   opacity: 0;
+   transition: all linear 0.3s;
+}
+.Cloud:nth-child(2).ShowCloud {
+   opacity: 1;
+   visibility: visible;
+}
+.Cloud:nth-child(2):after.ShowCloud {
+   opacity: 1;
+   visibility: visible;
+}
+.Sun {
+   position: absolute;
+   top: 110%;
+   left: 50%;
+   width: 2.5em;
+   height: 2.5em;
+   margin: -1.25em;
+   background: yellow;
+   border-radius: 50%;
+   box-shadow: 0 0 0 0.375em yellow;
+   animation: spin 12s infinite linear;
+   pointer-events: none;
+   opacity: 0;
+   transition: all linear 0.3s;
+}
+.Sun.ShowSun {
+   top: 50%;
+   left: 50%;
+   pointer-events: all;
+   opacity: 1;
+}
+.Rays {
+   position: absolute;
+   top: -2em;
+   left: 50%;
+   display: block;
+   width: 0.375em;
+   height: 1.125em;
+   margin-left: -0.1875em;
+   background: yellow;
+   border-radius: 0.25em;
+   box-shadow: 0 5.375em yellow;
+}
+.Rays:before,
+.Rays:after {
+   content: "";
+   position: absolute;
+   top: 0em;
+   left: 0em;
+   display: block;
+   width: 0.375em;
+   height: 1.125em;
+   transform: rotate(60deg);
+   transform-origin: 50% 3.25em;
+   background: yellow;
+   border-radius: 0.25em;
+   box-shadow: 0 5.375em yellow;
+}
+.Rays:before {
+   transform: rotate(120deg);
+}
+.Cloud + .Sun {
+   margin: -2em 1em;
+}
+@keyframes spin {
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+@keyframes cloud {
+   0% {
+      opacity: 0;
+   }
+   50% {
+      opacity: 0.3;
+   }
+   100% {
+      opacity: 0;
+      transform: scale(0.5) translate(-200%, -3em);
+   }
+}

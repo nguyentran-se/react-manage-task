@@ -16,8 +16,8 @@
    padding: 6px 10px 2px;
    line-height: 1;
    user-select: none;
-   border: 1px solid #fff;
-   transition: all linear 0.1s;
+   border: 1px solid var(--bg-theme-color);
+   transition: all linear 0.1s, border-color 0s;
 }
 .Item span {
    font-size: 12px;
@@ -36,7 +36,7 @@
 
 .Content h4 {
    color: var(--text-color);
-   font-weight: var(--fw-medium-level);
+   font-weight: var(--fw-low-level);
    transition: all linear 0.3s;
    position: relative;
 }

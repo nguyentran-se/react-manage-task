@@ -1,0 +1,74 @@
+.TimeBar {
+   height: 39px;
+   padding: 0 20px;
+   margin-right: 10px;
+   border-radius: 20px;
+
+   background-color: var(--bg-theme-color);
+   color: var(--text-color);
+   font-size: 18px;
+
+   user-select: none;
+}
+.Time {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.Time h4 {
+   margin-right: 11px;
+   font-size: 18px;
+
+   color: var(--text-color);
+}
+.Time input {
+   width: 50px;
+   height: 100%;
+   padding: 2px;
+   border: 2px solid var(--sidebar-icon-color);
+   outline: none;
+
+   text-align: center;
+   font-size: 18px;
+   font-weight: var(--fw-medium-level);
+
+   caret-color: var(--primary-color);
+   background-color: var(--bg-input-color);
+   color: var(--text-color);
+   transition: all linear 0.3s;
+}
+.Time input:placeholder-shown {
+   font-size: 18px;
+}
+.Time input:hover,
+.Time input:active,
+.Time input:focus {
+   border-color: var(--primary-color);
+}
+.Time span {
+   margin: 0 5px;
+   font-size: 18px;
+   font-weight: var(--fw-medium-level);
+}
+input:last-of-type {
+   height: 70%;
+   font-size: 13px;
+   align-self: flex-end;
+   width: 30px;
+   margin-right: 11px;
+}
+.Time span:nth-of-type(2) {
+   align-self: flex-end;
+}
+input:last-of-type:placeholder-shown {
+   font-size: 13px;
+}
+
+.Start {
+   font-weight: var(--fw-high-level);
+   cursor: pointer;
+   height: 100%;
+   line-height: 39px;
+}

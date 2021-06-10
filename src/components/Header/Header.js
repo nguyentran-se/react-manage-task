@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {} from "@heroicons/react/solid";
 import {
    CogIcon,
@@ -8,10 +8,25 @@ import {
 } from "@heroicons/react/outline";
 import classes from "./Header.css";
 import Button from "../UI/Button/Button";
-
+import themeClasses from "../../assets/styles/theme.css";
+import Sun from "../UI/ToggleTheme/Sun/Sun";
+import TimeBar from "./TimeBar/TimeBar";
 const Header = (props) => {
+   const [toggleTheme, setToggleTheme] = useState(false);
+   useEffect(() => {
+      const app = document.body.querySelector("#root div");
+      if (toggleTheme) {
+         app.classList.remove(themeClasses.LightMode);
+         app.classList.add(themeClasses.DarkMode);
+      } else {
+         app.classList.remove(themeClasses.DarkMode);
+         app.classList.add(themeClasses.LightMode);
+      }
+   }, [toggleTheme]);
+
    return (
       <section className={classes.Header}>
+         <TimeBar />
          <div className={classes.HeaderItems}>
             <div className={classes.Item}>
                <CogIcon className={classes.Icon} />
@@ -26,7 +41,14 @@ const Header = (props) => {
                <SearchIcon className={classes.Icon} />
             </div>
          </div>
-         <Button btnName="Go Premium" marginLeft="40px" />
+         <div
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+               setToggleTheme(!toggleTheme);
+            }}>
+            {/* <Button btnName="Go Premium" marginLeft="40px" /> */}
+            <Sun toggle={toggleTheme} />
+         </div>
       </section>
    );
 };

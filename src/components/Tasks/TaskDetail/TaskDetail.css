@@ -8,7 +8,9 @@
    padding: 0 24px;
    display: flex;
    align-items: center;
-   box-shadow: 0px 4px 10px -3px var(--sidebar-icon-color);
+
+   background-color: var(--task-adding-input);
+   box-shadow: var(--shadow-detail);
 }
 .Header h3 {
    text-transform: uppercase;
@@ -30,15 +32,19 @@
    background-color: var(--bg-theme-color);
 }
 .Input input {
-   border-radius: 10px;
-   outline: none;
-   font-size: 24px;
-   font-weight: var(--fw-high-level);
-   border: none;
-   transition: all linear 0.3s;
-   padding: 4px 8px;
-   caret-color: var(--primary-color);
    width: 100%;
+   border-radius: 10px;
+   padding: 4px 8px;
+   border: none;
+   outline: none;
+
+   font-weight: var(--fw-high-level);
+   font-size: 24px;
+   transition: all linear 0.3s;
+
+   caret-color: var(--primary-color);
+   background-color: var(--bg-theme-color);
+   color: var(--text-color);
 }
 .Input input:focus,
 .Input input:hover {
@@ -55,6 +61,7 @@
    display: inline-block;
    border-radius: 160px;
    cursor: pointer;
+   color: var(--sidebar-icon-color);
 }
 
 .RemindMe {
@@ -95,8 +102,10 @@
 }
 .Item span {
    display: inline-block;
+   color: var(--text-color);
 }
 .Icon {
    width: 20px;
    margin-right: 13px;
+   color: var(--task-detail-icon);
 }

@@ -27,8 +27,13 @@
    --tag-color: #f9d21f;
    --bg-counter-color: #9b9b9b;
    --shadow-adding: 0px -4px 10px -3px var(--sidebar-icon-color);
+   --shadow-detail: 0px 3px 10px -3px var(--sidebar-icon-color);
    --bg-input-color: #fff;
    --bg-input-edit: #f6f6f6;
+   --task-adding-input: #fff;
+   --task-detail-icon: #b2b2b2;
+
+   --sun-border: #fff;
 }
 /* Dark mode */
 .App.DarkMode {
@@ -42,7 +47,14 @@
    --primary-color: #0080ff;
    --tag-color: #f9d21f;
    --bg-counter-color: #a1a1a1;
+
    --shadow-adding: 0px -4px 10px -3px #030303;
+   --shadow-detail: 0px 3px 10px -3px #030303;
+
    --bg-input-color: #424242;
    --bg-input-edit: #000;
+
+   --task-adding-input: #252525;
+   --task-detail-icon: #8e8e92;
+   --sun-border: var(--text-color);
 }
