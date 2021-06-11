@@ -90,6 +90,7 @@ const reducer = (state = initialState, action) => {
       case actionTypes.TOGGLE_CHECK:
          copy = [...state.groups.today.tasks];
          copy[checkIndex] = { ...state.groups.today.tasks[checkIndex] };
+         copy[checkIndex].isActive = false;
          copy[checkIndex].isCompleted = !copy[checkIndex].isCompleted;
          // sắp xếp array theo uncompleted
          // và completed dựa vào prevIndex
