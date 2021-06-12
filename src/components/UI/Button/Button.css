@@ -21,6 +21,9 @@
    top: 39px;
    opacity: 0;
 }
+.ButtonStart {
+   transition: all linear 0.1s;
+}
 .Button:active {
    transform: translateY(2px);
    box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 1);

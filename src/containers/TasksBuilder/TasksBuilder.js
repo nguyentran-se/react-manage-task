@@ -4,7 +4,7 @@ import Tasks from "../../components/Tasks/Tasks";
 import { connect } from "react-redux";
 import TaskAdding from "../../components/Tasks/TaskAdding/TaskAdding";
 import * as actionCreators from "../../store/actions/index";
-import { Route, Switch, Prompt } from "react-router-dom";
+// import { Route, Switch, Prompt } from "react-router-dom";
 import WhiteBlock from "../../components/UI/WhiteBlock/WhiteBlock";
 import TaskDetail from "../../components/Tasks/TaskDetail/TaskDetail";
 // import axios from "../../axios-tasks";

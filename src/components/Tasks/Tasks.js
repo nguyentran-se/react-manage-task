@@ -12,7 +12,9 @@ const Tasks = (props) => {
       <div key={topic}>
          <div onClick={() => toggleTaskList(topic)} className={classes.Header}>
             <h3>{topic}</h3>
-            <div className={classes.Counter}>{groups[topic].tasks.length}</div>
+            <div className={classes.Counter}>
+               {groups[topic].tasks.filter((ele) => !ele.isCompleted).length}
+            </div>
          </div>
          <TaskItems
             isSelected={groups[topic].isSelected}

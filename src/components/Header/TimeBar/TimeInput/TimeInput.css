@@ -1,0 +1,42 @@
+.TimeInput {
+   width: 50px;
+   height: 100%;
+   padding: 2px;
+   border: 2px solid var(--sidebar-icon-color);
+   outline: none;
+
+   text-align: center;
+   font-size: 18px;
+   font-weight: var(--fw-medium-level);
+
+   caret-color: var(--primary-color);
+   background-color: var(--bg-input-color);
+   color: var(--text-color);
+   transition: all linear 0.3s;
+}
+.TimeInput:placeholder-shown {
+   font-size: 18px;
+}
+.TimeInput:hover,
+.TimeInput:active,
+.TimeInput:focus {
+   border-color: var(--primary-color);
+}
+
+.TimeInput.Disabled {
+   cursor: not-allowed;
+}
+.TimeInput.Disabled:hover {
+   border-color: var(--sidebar-icon-color);
+}
+
+.TimeInput.MediumSize {
+   height: 70%;
+   font-size: 13px;
+   align-self: flex-end;
+   width: 30px;
+   margin-right: 11px;
+}
+.TimeInput.MediumSize:placeholder-shown {
+   font-size: 13px;
+}

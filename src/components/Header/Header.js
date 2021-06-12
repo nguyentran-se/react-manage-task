@@ -13,8 +13,10 @@ import Sun from "../UI/ToggleTheme/Sun/Sun";
 import TimeBar from "./TimeBar/TimeBar";
 import Button from "../UI/Button/Button";
 import axios from "../../axios-tasks";
+import clickOutSideHandler from "../../helper/clickOutSideHandler";
 
 const Header = (props) => {
+   // toggle theme
    const [toggleTheme, setToggleTheme] = useState(false);
    useEffect(() => {
       const app = document.body.querySelector("#root div");
@@ -26,39 +28,21 @@ const Header = (props) => {
          app.classList.add(themeClasses.LightMode);
       }
    }, [toggleTheme]);
-   const [clicked, setClicked] = useState(false);
-   const [clicked2, setClicked2] = useState(false);
+   const [mailClicked, setMailClicked] = useState(false);
+   const [infoClicked, setInfoClicked] = useState(false);
 
    // clickoutside
-   const inputClickHandler = (e) => {
-      setClicked(true);
+   const mailClickHandler = (e) => {
+      setMailClicked(true);
    };
-   const inputClickHandler2 = (e) => {
-      setClicked2(true);
+   const infoClickHandler = (e) => {
+      setInfoClicked(true);
    };
-   function clickOutSideHandler(ref, callback) {
-      useEffect(() => {
-         /**
-          * Alert if clicked on outside of element
-          */
-         function handleClickOutside(event) {
-            if (ref.current && !ref.current.contains(event.target)) {
-               callback(false);
-            }
-         }
-         // Bind the event listener
-         document.addEventListener("mousedown", handleClickOutside);
-         return () => {
-            // Unbind the event listener on clean up
-            document.removeEventListener("mousedown", handleClickOutside);
-         };
-      }, [ref]);
-   }
 
    const wrapperRef = useRef(null);
    const wrapperRef2 = useRef(null);
-   clickOutSideHandler(wrapperRef, setClicked);
-   clickOutSideHandler(wrapperRef2, setClicked2);
+   clickOutSideHandler(wrapperRef, setMailClicked);
+   clickOutSideHandler(wrapperRef2, setInfoClicked);
 
    // send msg
    const [msg, setMsg] = useState("");
@@ -72,7 +56,7 @@ const Header = (props) => {
          .post("/message.json", data)
          .then((response) => {
             console.log(response);
-            setClicked(false);
+            setMailClicked(false);
             setMsg("");
          })
          .catch((e) => {});
@@ -87,12 +71,12 @@ const Header = (props) => {
             </div>
             <div
                className={classes.Item}
-               onClick={(e) => inputClickHandler(e)}
+               onClick={(e) => mailClickHandler(e)}
                ref={wrapperRef}>
                <MailIcon className={classes.Icon} />
                <div
                   className={
-                     clicked
+                     mailClicked
                         ? `${classes.Dialog} ${classes.ShowDialog}`
                         : classes.Dialog
                   }>
@@ -104,20 +88,20 @@ const Header = (props) => {
                </div>
                <Button
                   btnType={
-                     clicked ? ["ButtonPos"] : ["ButtonPos", "ButtonVisi"]
+                     mailClicked ? ["ButtonPos"] : ["ButtonPos", "ButtonVisi"]
                   }
-                  clickSend={sendMsg}>
+                  clicked={sendMsg}>
                   Send
                </Button>
             </div>
             <div
                className={classes.Item}
-               onClick={(e) => inputClickHandler2(e)}
+               onClick={(e) => infoClickHandler(e)}
                ref={wrapperRef2}>
                <InformationCircleIcon className={classes.Icon} />
                <div
                   className={
-                     clicked2
+                     infoClicked
                         ? `${classes.Dialog} ${classes.Custom} ${classes.ShowDialog}`
                         : `${classes.Dialog} ${classes.Custom}`
                   }>

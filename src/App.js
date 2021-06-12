@@ -10,7 +10,7 @@ class App extends Component {
             <Layout>
                <Switch>
                   <Route path="/tasks" component={TasksBuilder} />
-                  <Redirect exact from="/" to="/tasks/" />
+                  <Redirect exact from="/" to="/tasks/today" />
                </Switch>
             </Layout>
          </div>
