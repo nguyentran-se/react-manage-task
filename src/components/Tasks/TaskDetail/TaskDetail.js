@@ -1,10 +1,13 @@
 import { SunIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
+import Modal from "../../UI/Modal/Modal";
 import classes from "./TaskDetail.css";
+import Tags from "./Tags/Tags";
+
 const TaskDetail = (props) => {
-   const { tasks, editTitleTask } = props;
+   const { tasks, editTitleTask, addTag } = props;
    let editIndex;
    let activeItem;
    tasks.forEach((task, index) => {
@@ -15,8 +18,15 @@ const TaskDetail = (props) => {
    });
    //get value of activeItem
    let value = "";
-   if (activeItem) value = activeItem.title;
-   console.log("[TESTING]");
+   let createdTime = "";
+   if (activeItem) {
+      value = activeItem.title;
+      createdTime = activeItem.created;
+   }
+
+   const [showModal, setShowModal] = useState(false);
+   // state tags
+   // console.log("[TESTING]");
    return (
       <div className={classes.TaskDetail}>
          <div className={classes.Header}>
@@ -34,10 +44,24 @@ const TaskDetail = (props) => {
                />
             </div>
             <div className={classes.AddTag}>
-               <div>Add Tag</div>
+               <div
+                  className={classes.AddTagTitle}
+                  onClick={() => setShowModal(true)}>
+                  Add Tag
+               </div>
+               <Modal
+                  showModal={showModal}
+                  // showModal={true}
+                  modalClosed={() => setShowModal(false)}>
+                  <Tags
+                     addTag={addTag}
+                     tasks={tasks}
+                     modalClosed={() => setShowModal(false)}
+                  />
+               </Modal>
             </div>
             <div className={classes.RemindMe}>
-               <h4>remind me</h4>
+               <h4>REMIND ME</h4>
                <div className={classes.Option}>
                   <div className={classes.Item}>
                      <SunIcon className={classes.Icon} />
@@ -57,6 +81,10 @@ const TaskDetail = (props) => {
                   </div>
                </div>
             </div>
+            <div className={classes.DateCreated}>
+               <h4>CREATED</h4>
+               <h4>{createdTime}</h4>
+            </div>
          </div>
       </div>
    );
@@ -71,6 +99,7 @@ const mapDispatchToProps = (dispatch) => {
    return {
       editTitleTask: (editIndex, editValue) =>
          dispatch(actionCreators.editTitleTask(editIndex, editValue)),
+      addTag: (keyTag) => dispatch(actionCreators.addTag(keyTag)),
    };
 };
 

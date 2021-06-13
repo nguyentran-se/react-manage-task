@@ -30,3 +30,12 @@
 }
 .ButtonShadow {
 }
+
+.Button.Disabled {
+   color: var(--sidebar-icon-color);
+   cursor: not-allowed;
+}
+.Button.Disabled:active {
+   transform: none;
+   box-shadow: none;
+}

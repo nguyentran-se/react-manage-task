@@ -36,7 +36,21 @@ export const fetchTasks = () => {
          .get("groups/today/tasks.json")
          .then((response) => {
             // console.log(response.data);
-            dispatch(fetchTasksSuccess(response.data));
+            const data = response.data;
+            const changedData = data.map((task) => {
+               return {
+                  ...task,
+                  tag: {
+                     priority: task.tag.priority,
+                     important: task.tag.important,
+                     deadline: task.tag.deadline,
+                     trackback: task.tag.trackback,
+                     family: task.tag.family,
+                     personal: task.tag.personal,
+                  },
+               };
+            });
+            dispatch(fetchTasksSuccess(changedData));
          })
          .catch((err) => {
             dispatch(fetchTasksFailed(err));
@@ -78,4 +92,8 @@ export const editTitleTask = (editIndex, editValue) => {
 
 export const clearCompleted = () => {
    return { type: actionTypes.CLEAR_COMPLETED };
+};
+
+export const addTag = (keyTag) => {
+   return { type: actionTypes.ADD_TAG, keyTag };
 };

@@ -1,0 +1,85 @@
+.Tags {
+   font-size: 16px;
+}
+
+.Header {
+   padding: 19px 16px;
+}
+.Header h3 {
+   text-align: left;
+   font-weight: var(--fw-high-level);
+   color: var(--text-color);
+   user-select: none;
+}
+.Container {
+   padding: 0 2px;
+   color: var(--text-color);
+}
+.Item {
+   font-size: 15px;
+   cursor: pointer;
+   user-select: none;
+}
+.Content {
+   display: flex;
+   align-items: center;
+   padding: 19px 0 19px 16px;
+   background-color: yellowgreen;
+   color: yellowgreen;
+   position: relative;
+}
+.Content::after {
+   content: "";
+   position: absolute;
+   top: 50%;
+   left: 16px;
+
+   width: 18px;
+   height: 18px;
+   border-radius: 5px;
+   border: 1px solid #fff;
+
+   transition: all linear 0.3s;
+   transform: translateY(-50%);
+}
+.Icon {
+   margin-right: 10px;
+   width: 18px;
+   background-color: transparent;
+   border-radius: 5px;
+   transition: all linear 0.3s;
+}
+.Icon.Checked {
+   background-color: #fff;
+}
+.Content h4 {
+   color: #fff;
+   font-weight: var(--fw-medium-level);
+}
+
+.Control {
+   display: flex;
+   align-items: center;
+}
+
+.Btn {
+   padding: 19px;
+   text-align: center;
+   flex: 1;
+   color: #fd2837;
+   cursor: pointer;
+   transition: all linear 0.3s;
+   user-select: none;
+   font-weight: var(--fw-medium-level);
+}
+/* .Control div:nth-child(3) {
+   color: var(--primary-color);
+} */
+.Btn:hover {
+   background-color: var(--hover-modal-control);
+}
+/* .Separated {
+   width: 1px;
+   height: 20px;
+   background-color: var(--sidebar-icon-color);
+} */

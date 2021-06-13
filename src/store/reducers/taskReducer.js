@@ -1,4 +1,6 @@
 import * as actionTypes from "../actions/actionTypes";
+import getPresentDay from "../../helper/getPresentDay";
+import { DEFAULT_TAGS } from "../../constant/GlodbalConstant";
 const initialState = {
    loading: false,
    iconLoading: false,
@@ -26,6 +28,7 @@ const reducer = (state = initialState, action) => {
       activeIndex,
       editIndex,
       editValue,
+      keyTag,
    } = action;
    switch (type) {
       case actionTypes.TOGGLE_TASKLIST:
@@ -48,10 +51,11 @@ const reducer = (state = initialState, action) => {
          let copy = state.groups.today.tasks.slice();
          const task = {
             title: value,
-            tag: "Personal",
+            tag: DEFAULT_TAGS,
             isCompleted: false,
             isActive: false,
             prevIndex: 0,
+            created: getPresentDay.toString(),
          };
          // thêm task vào đầu mảng
          // gắn index hiện tại trong mảng để return về vị trí khi
@@ -181,6 +185,30 @@ const reducer = (state = initialState, action) => {
                   tasks: state.groups.today.tasks.filter(
                      (task) => !task.isCompleted
                   ),
+               },
+            },
+         };
+      case actionTypes.ADD_TAG:
+         let tagIndex;
+         copy = [...state.groups.today.tasks];
+         const [activeTask] = copy.filter((task, index) => {
+            if (task.isActive) tagIndex = index;
+            return task.isActive;
+         });
+         const copyActiveTask = { ...activeTask };
+         copyActiveTask.tag = { ...activeTask.tag };
+         copyActiveTask.tag[keyTag] = {
+            ...activeTask.tag[keyTag],
+            pick: !copy[tagIndex].tag[keyTag].pick,
+         };
+         copy[tagIndex] = copyActiveTask;
+         return {
+            ...state,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: copy,
                },
             },
          };

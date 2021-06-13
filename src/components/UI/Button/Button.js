@@ -1,10 +1,10 @@
 import React from "react";
 import classes from "./Button.css";
 const Button = (props) => {
-   const { btnType = [], marginLeft = "0", clicked } = props;
+   const { btnType = [], marginLeft = "0", clicked, disabled } = props;
    let buttonClasses = [classes.Button];
    btnType.forEach((type) => buttonClasses.push(classes[type]));
-
+   if (disabled) buttonClasses.push(classes.Disabled);
    return (
       <div
          style={{ marginLeft: marginLeft }}

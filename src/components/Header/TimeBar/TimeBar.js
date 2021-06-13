@@ -122,14 +122,14 @@ const TimeBar = () => {
             </h4>
             <TimeInput
                placeholder="min"
-               value={rest.min}
+               value={emptyTime ? "" : rest.min}
                changed={(e) => setRest({ ...rest, min: e.target.value })}
                disabledRest={emptyTime}
             />
             <span>:</span>
             <TimeInput
                placeholder="sec"
-               value={rest.sec}
+               value={emptyTime ? "" : rest.sec}
                changed={(e) => setRest({ ...rest, sec: e.target.value })}
                inputCustom={["MediumSize"]}
                disabledRest={emptyTime}

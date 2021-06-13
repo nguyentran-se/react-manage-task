@@ -11,6 +11,11 @@ const TaskItems = (props) => {
       const itemClasses = [classes.ItemWrapper];
       if (task.isCompleted) itemClasses.push(classes.Completed);
       if (task.isActive) itemClasses.push(classes.Active);
+      //get tag title === true of obj tag
+      const tagKey = [];
+      for (const key in task.tag) {
+         if (task.tag[key].pick) tagKey.push(key);
+      }
       return (
          <div
             key={index}
@@ -24,7 +29,11 @@ const TaskItems = (props) => {
                   />
                   <h4>{task.title}</h4>
                </div>
-               <span>{task.tag}</span>
+               {tagKey.map((key) => (
+                  <span key={key} style={{ color: task.tag[key].bColor }}>
+                     {key.charAt(0).toUpperCase() + key.slice(1)}
+                  </span>
+               ))}
                <TrashIcon
                   onClick={() => deleteTask(index)}
                   className={classes.Trash}

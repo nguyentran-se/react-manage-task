@@ -26,6 +26,9 @@
    text-transform: capitalize;
    transition: all linear 0.3s;
 }
+.Item span + span {
+   margin-left: 6px;
+}
 .Content {
    position: relative;
 

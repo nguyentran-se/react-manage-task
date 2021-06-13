@@ -1,5 +1,6 @@
 /* normal mode */
 .App {
+   --bg-image: url("../../assets/images/theme/bg-image-light.jpg");
    --bg-theme-color: #fff;
    --text-color: #030303;
    --text-nav-color: #030303;
@@ -16,6 +17,8 @@
 }
 /* Light mode */
 .App.LightMode {
+   --bg-image: url("../../assets/images/theme/bg-image-light.jpg");
+
    --bg-theme-color: #fff;
    --text-color: #030303;
    --text-nav-color: #030303;
@@ -34,9 +37,13 @@
    --task-detail-icon: #b2b2b2;
 
    --sun-border: #fff;
+
+   --hover-modal-control: #f6f6f6;
 }
 /* Dark mode */
 .App.DarkMode {
+   --bg-image: url("../../assets/images/theme/bg-image-dark2.jpg");
+
    --bg-theme-color: #161616;
    --text-color: #e4e4e4;
    --text-nav-color: #6f6f6f;
@@ -57,4 +64,5 @@
    --task-adding-input: #252525;
    --task-detail-icon: #8e8e92;
    --sun-border: var(--text-color);
+   --hover-modal-control: #424242;
 }
