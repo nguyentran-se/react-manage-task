@@ -1,4 +1,5 @@
 import { SunIcon } from "@heroicons/react/outline";
+import { XIcon } from "@heroicons/react/solid";
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
@@ -7,7 +8,7 @@ import classes from "./TaskDetail.css";
 import Tags from "./Tags/Tags";
 
 const TaskDetail = (props) => {
-   const { tasks, editTitleTask, addTag } = props;
+   const { tasks, editTitleTask, addTag, deleteTag } = props;
    let editIndex;
    let activeItem;
    tasks.forEach((task, index) => {
@@ -16,12 +17,17 @@ const TaskDetail = (props) => {
          activeItem = task;
       }
    });
+
    //get value of activeItem
+   let tagKey = [];
    let value = "";
    let createdTime = "";
    if (activeItem) {
       value = activeItem.title;
       createdTime = activeItem.created;
+      for (const key in activeItem.tag) {
+         if (activeItem.tag[key].pick) tagKey.push(key);
+      }
    }
 
    const [showModal, setShowModal] = useState(false);
@@ -44,11 +50,29 @@ const TaskDetail = (props) => {
                />
             </div>
             <div className={classes.AddTag}>
+               {tagKey.map(
+                  (key) =>
+                     key !== "personal" && (
+                        <div
+                           className={classes.Tag}
+                           key={key}
+                           style={{
+                              backgroundColor: activeItem.tag[key].bColor,
+                           }}>
+                           {key.charAt(0).toUpperCase() + key.slice(1)}
+                           <XIcon
+                              onClick={() => deleteTag(key)}
+                              className={`${classes.Icon} ${classes.Mini}`}
+                           />
+                        </div>
+                     )
+               )}
                <div
                   className={classes.AddTagTitle}
                   onClick={() => setShowModal(true)}>
                   Add Tag
                </div>
+
                <Modal
                   showModal={showModal}
                   // showModal={true}
@@ -100,6 +124,7 @@ const mapDispatchToProps = (dispatch) => {
       editTitleTask: (editIndex, editValue) =>
          dispatch(actionCreators.editTitleTask(editIndex, editValue)),
       addTag: (keyTag) => dispatch(actionCreators.addTag(keyTag)),
+      deleteTag: (keyTag) => dispatch(actionCreators.deleteTag(keyTag)),
    };
 };
 

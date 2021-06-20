@@ -1,5 +1,5 @@
 export const DEFAULT_TAGS = {
-   priority: { pick: false, bColor: "#FADB4C" },
+   priority: { pick: false, bColor: "rgb(249, 210, 31)" },
    important: { pick: false, bColor: "#FF3D56" },
    deadline: { pick: false, bColor: "#FD7A4C" },
    trackback: { pick: false, bColor: "#2FC14A" },

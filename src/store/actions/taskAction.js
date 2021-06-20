@@ -97,3 +97,7 @@ export const clearCompleted = () => {
 export const addTag = (keyTag) => {
    return { type: actionTypes.ADD_TAG, keyTag };
 };
+
+export const deleteTag = (keyTag) => {
+   return { type: actionTypes.DELETE_TAG, keyTag };
+};

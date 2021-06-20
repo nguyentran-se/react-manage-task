@@ -9,8 +9,8 @@ class App extends Component {
          <div className={`${classes.App}`}>
             <Layout>
                <Switch>
-                  <Route path="/tasks" component={TasksBuilder} />
-                  <Redirect exact from="/" to="/tasks/today" />
+                  <Route path="/tasks/today" component={TasksBuilder} />
+                  <Redirect from="/" to="/tasks/today" />
                </Switch>
             </Layout>
          </div>

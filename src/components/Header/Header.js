@@ -17,15 +17,20 @@ import clickOutSideHandler from "../../helper/clickOutSideHandler";
 
 const Header = (props) => {
    // toggle theme
-   const [toggleTheme, setToggleTheme] = useState(false);
+   const [toggleTheme, setToggleTheme] = useState(
+      localStorage.getItem("theme") === themeClasses.DarkMode ? true : false
+   );
+
    useEffect(() => {
       const app = document.body.querySelector("#root div");
       if (toggleTheme) {
          app.classList.remove(themeClasses.LightMode);
          app.classList.add(themeClasses.DarkMode);
+         localStorage.setItem("theme", themeClasses.DarkMode);
       } else {
          app.classList.remove(themeClasses.DarkMode);
          app.classList.add(themeClasses.LightMode);
+         localStorage.setItem("theme", themeClasses.LightMode);
       }
    }, [toggleTheme]);
    const [mailClicked, setMailClicked] = useState(false);

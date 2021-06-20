@@ -25,9 +25,9 @@ const TasksBar = (props) => {
          <div className={classes.TasksBarItems}>
             <h3>
                Good Morning{" "}
-               <span role="img" aria-label="emote">
+               {/* <span role="img" aria-label="emote">
                   &#128582;
-               </span>
+               </span> */}
             </h3>
             <div className={classes.Separate}></div>
             <div

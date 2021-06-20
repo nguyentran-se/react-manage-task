@@ -47,7 +47,7 @@ const TaskItems = (props) => {
          style={
             isSelected
                ? {
-                    height: `${56 * tasks.length}px`,
+                    height: `${57 * tasks.length}px`,
                     visibility: "visible",
                  }
                : {

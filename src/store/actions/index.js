@@ -10,4 +10,5 @@ export {
    editTitleTask,
    clearCompleted,
    addTag,
+   deleteTag,
 } from "./taskAction";

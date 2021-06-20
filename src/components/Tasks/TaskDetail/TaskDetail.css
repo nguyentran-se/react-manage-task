@@ -26,6 +26,7 @@
    border-bottom: 3px solid var(--text-color);
    color: var(--text-color);
    padding: 0 5px 4px;
+   user-select: none;
 }
 
 .Container {
@@ -47,7 +48,7 @@
 
    font-weight: var(--fw-high-level);
    font-size: 24px;
-   transition: all linear 0.3s;
+   transition: all 0.3s linear;
 
    caret-color: var(--primary-color);
    background-color: var(--bg-theme-color);
@@ -60,6 +61,8 @@
 
 .AddTag {
    margin-top: 29px;
+   display: flex;
+   align-items: center;
 }
 .AddTagTitle {
    padding: 6px 8px;
@@ -68,7 +71,12 @@
    display: inline-block;
    border-radius: 160px;
    cursor: pointer;
+
    color: var(--sidebar-icon-color);
+   transition: all 0.1s linear;
+}
+.AddTagTitle:active {
+   transform: translateY(2px);
 }
 
 .RemindMe {
@@ -110,4 +118,31 @@
    width: 20px;
    margin-right: 13px;
    color: var(--task-detail-icon);
+}
+.Tag {
+   --text-tag: #000;
+
+   padding: 6px 8px;
+   border: 1px solid var(--text-tag);
+   margin-right: 10px;
+   border-radius: 160px;
+   font-size: 13px;
+
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: var(--text-tag);
+
+   transition: all 0.1s linear;
+   user-select: none;
+}
+.Tag:active {
+   transform: translateY(2px);
+}
+.Icon.Mini {
+   width: 14px;
+   margin: 0 0 0 10px;
+
+   color: var(--text-tag);
+   cursor: pointer;
 }

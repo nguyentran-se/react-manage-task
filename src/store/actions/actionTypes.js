@@ -6,6 +6,7 @@ export const ACTIVE_TASK = "ACTIVE_TASK";
 export const EDIT_TITLE_TASK = "EDIT_TITLE_TASK";
 export const CLEAR_COMPLETED = "CLEAR_COMPLETED";
 export const ADD_TAG = "ADD_TAG";
+export const DELETE_TAG = "DELETE_TAG";
 
 export const FETCH_TASKS_START = "FETCH_TASKS_START";
 export const FETCH_TASKS_SUCCESS = "FETCH_TASKS_SUCCESS";

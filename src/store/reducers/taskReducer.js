@@ -212,6 +212,29 @@ const reducer = (state = initialState, action) => {
                },
             },
          };
+      case actionTypes.DELETE_TAG:
+         copy = [...state.groups.today.tasks];
+         const [activeTaskDelTag] = copy.filter((task, index) => {
+            if (task.isActive) tagIndex = index;
+            return task.isActive;
+         });
+         const copyActiveTaskDelTag = { ...activeTaskDelTag };
+         copyActiveTaskDelTag.tag = { ...activeTaskDelTag.tag };
+         copyActiveTaskDelTag.tag[keyTag] = {
+            ...activeTaskDelTag.tag[keyTag],
+            pick: false,
+         };
+         copy[tagIndex] = copyActiveTaskDelTag;
+         return {
+            ...state,
+            groups: {
+               ...state.groups,
+               today: {
+                  ...state.groups.today,
+                  tasks: copy,
+               },
+            },
+         };
       default:
          return state;
    }
