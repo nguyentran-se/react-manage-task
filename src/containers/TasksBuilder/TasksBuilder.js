@@ -12,7 +12,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 // import Aux from "../../hoc/Auxilary/Auxilary";
 export class TasksBuilder extends Component {
    componentDidMount() {
-      this.props.fetchTasks();
+      this.props.fetchTasks(this.props.token, this.props.userId);
    }
    componentDidUpdate() {
       if (this.props.isUpdated)
@@ -49,6 +49,8 @@ const mapStateToProps = (state) => {
       groups: state.tsk.groups,
       loading: state.tsk.loading,
       isUpdated: state.tsk.isUpdated,
+      token: state.auth.token,
+      userId: state.auth.userInfo.userId,
    };
 };
 
@@ -56,7 +58,8 @@ const mapDispatchToProps = (dispatch) => {
    return {
       toggleTaskList: (topic) => dispatch(actionCreators.toggleTaskList(topic)),
       addTask: (value) => dispatch(actionCreators.addTask(value)),
-      fetchTasks: () => dispatch(actionCreators.fetchTasks()),
+      fetchTasks: (token, userId) =>
+         dispatch(actionCreators.fetchTasks(token, userId)),
    };
 };
 

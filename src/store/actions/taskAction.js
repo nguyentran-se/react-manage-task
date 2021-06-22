@@ -29,17 +29,17 @@ const fetchTasksFailed = (err) => {
    return { type: actionTypes.FETCH_TASKS_FAILED, err };
 };
 
-export const fetchTasks = () => {
+export const fetchTasks = (token, userId) => {
    return (dispatch) => {
       dispatch(fetchTasksStart());
 
       // axios
       //    .get("groups/today/tasks.json")
       taskApi
-         .getAllTasks()
+         .getAllTasks(token, userId)
          .then((response) => {
-            // console.log(response.data);
-            const data = response;
+            // console.log(response);
+            const data = response.groups.today.tasks;
             const changedData = data.map((task) => {
                return {
                   ...task,
@@ -71,11 +71,11 @@ const pushTaskFailed = (err) => {
    return { type: actionTypes.PUSH_TASK_FAILED, err };
 };
 
-export const pushTasks = (data) => {
+export const pushTasks = (data, token, userId) => {
    return (dispatch) => {
       dispatch(pushTaskStart());
       taskApi
-         .pushTasks(data)
+         .pushTasks(data, token, userId)
          .then((response) => {
             dispatch(pushTaskSuccess());
          })

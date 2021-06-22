@@ -28,18 +28,20 @@ const App = (props) => {
 
             if (!user) {
                props.onLogout();
+               console.log("NO USER");
                return;
             }
 
             user.getIdToken().then((response) => {
                const token = response;
+               console.log("Has user and token");
                const { uid, displayName, photoURL } = user;
                onLoginSuccess(token, uid, displayName, photoURL);
             });
          });
       return () => unregisterAuthObserver();
    }, []);
-
+   console.log(props.isAuthenticated);
    let renderOnAuth = (
       <Switch>
          <Route exact path="/" component={AuthLazy} />

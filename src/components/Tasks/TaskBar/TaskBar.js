@@ -17,11 +17,17 @@ const TasksBar = (props) => {
       isUpdated,
       clearCompleted,
       userInfo,
+      token,
    } = props;
    const iconClasses = [classes.Icon];
    if (iconLoading) iconClasses.push(classes.IconLoading);
    if (!isUpdated) iconClasses.push(classes.Disabled);
-   let name = userInfo.displayName.split(" ")[0];
+   let name;
+   let userId;
+   if (userInfo) {
+      name = userInfo.displayName.split(" ")[0];
+      userId = userInfo.userId;
+   }
    // if (!isUpdated) {
    //    setTimeout(() => {
    //       iconClasses.push(classes.Disabled);
@@ -57,7 +63,7 @@ const TasksBar = (props) => {
             <div
                title="Save tasks"
                className={classes.Item}
-               onClick={() => isUpdated && pushTasks(groups)}
+               onClick={() => isUpdated && pushTasks(groups, token, userId)}
                style={{ cursor: !isUpdated && "not-allowed" }}>
                <RefreshIcon className={iconClasses.join(" ")} />
             </div>
@@ -73,13 +79,15 @@ const mapStateToProps = (state) => {
       groups: state.tsk.groups,
       iconLoading: state.tsk.iconLoading,
       isUpdated: state.tsk.isUpdated,
+      token: state.auth.token,
       userInfo: state.auth.userInfo,
    };
 };
 
 const mapDispatchToProps = (dispatch) => {
    return {
-      pushTasks: (groups) => dispatch(actionCreators.pushTasks(groups)),
+      pushTasks: (groups, token, userId) =>
+         dispatch(actionCreators.pushTasks(groups, token, userId)),
       clearCompleted: () => dispatch(actionCreators.clearCompleted()),
    };
 };

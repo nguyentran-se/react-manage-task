@@ -13,8 +13,10 @@ import TimeBar from "./TimeBar/TimeBar";
 import Button from "../UI/Button/Button";
 import clickOutSideHandler from "../../helper/clickOutSideHandler";
 import stuffApi from "../../api/stuffApi";
+import { connect } from "react-redux";
 
 const Header = (props) => {
+   const { token, userId } = props;
    // toggle theme
    const [toggleTheme, setToggleTheme] = useState(
       localStorage.getItem("theme") === themeClasses.DarkMode ? true : false
@@ -57,7 +59,7 @@ const Header = (props) => {
          date: new Date().toString(),
       };
       stuffApi
-         .pushMsg(data)
+         .pushMsg(data, token, userId)
          .then((response) => {
             // console.log(response);
             setMailClicked(false);
@@ -174,5 +176,9 @@ const Header = (props) => {
       </section>
    );
 };
+const mapStateToProps = (state) => ({
+   token: state.auth.token,
+   userId: state.auth.userInfo.userId,
+});
 
-export default Header;
+export default connect(mapStateToProps)(Header);

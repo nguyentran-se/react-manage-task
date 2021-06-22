@@ -1,6 +1,6 @@
 import React from "react";
-import Banner from "../../components/Login/Banner/Banner";
-import Login from "../../components/Login/Login";
+import Banner from "../../components/SignIn/Banner/Banner";
+import SignIn from "../../components/SignIn/SignIn";
 import classes from "./Auth.css";
 const Auth = (props) => {
    return (
@@ -8,7 +8,7 @@ const Auth = (props) => {
          <div className={classes.Container}>
             <div className={classes.Wrapper}>
                <Banner />
-               <Login />
+               <SignIn />
             </div>
          </div>
       </div>

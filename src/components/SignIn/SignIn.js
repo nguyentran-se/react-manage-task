@@ -2,7 +2,7 @@ import React from "react";
 import firebase from "firebase/app";
 import "firebase/auth";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import classes from "./Login.css";
+import classes from "./SignIn.css";
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import "!style-loader!css-loader!./Firebase.css";
 const uiConfig = {
@@ -13,9 +13,9 @@ const uiConfig = {
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
    ],
 };
-const login = () => {
+const SignIn = () => {
    return (
-      <section className={classes.Login}>
+      <section className={classes.Container}>
          <div className={classes.Wrapper}>
             <div className={classes.SignIn}>
                <h1 style={{ fontSize: "24px" }}>Sign in</h1>
@@ -30,4 +30,4 @@ const login = () => {
    );
 };
 
-export default login;
+export default SignIn;
