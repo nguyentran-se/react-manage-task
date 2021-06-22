@@ -1,0 +1,26 @@
+.Auth {
+   background-color: #f6f6f6;
+   height: 100vh;
+   display: flow-root;
+   user-select: none;
+}
+.Container {
+   width: 960px;
+   height: 630px;
+   margin: 0 auto;
+
+   background: #fff;
+   margin-top: 26px;
+   border-radius: 12px;
+   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   border: thin solid #d8d8d8;
+}
+
+.Wrapper {
+   display: flex;
+   justify-content: space-between;
+   margin-top: 33px;
+   height: 572px;
+   color: #030303;
+   padding-left: 33px;
+}

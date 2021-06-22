@@ -7,13 +7,12 @@ import {
    SearchIcon,
 } from "@heroicons/react/outline";
 import classes from "./Header.css";
-// import Button from "../UI/Button/Button";
 import themeClasses from "../../assets/styles/theme.css";
 import Sun from "../UI/ToggleTheme/Sun/Sun";
 import TimeBar from "./TimeBar/TimeBar";
 import Button from "../UI/Button/Button";
-import axios from "../../axios-tasks";
 import clickOutSideHandler from "../../helper/clickOutSideHandler";
+import stuffApi from "../../api/stuffApi";
 
 const Header = (props) => {
    // toggle theme
@@ -57,10 +56,10 @@ const Header = (props) => {
          content: msg,
          date: new Date().toString(),
       };
-      axios
-         .post("/message.json", data)
+      stuffApi
+         .pushMsg(data)
          .then((response) => {
-            console.log(response);
+            // console.log(response);
             setMailClicked(false);
             setMsg("");
          })

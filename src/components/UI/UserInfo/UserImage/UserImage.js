@@ -1,7 +1,8 @@
 import React from "react";
-import userImage from "../../../../assets/images/photo.jpg";
+// import userImage from "../../../../assets/images/photo.jpg";
 
 function UserImage(props) {
+   const { photoURL } = props;
    const style = {
       borderRadius: "50%",
       objectFit: "cover",
@@ -10,7 +11,7 @@ function UserImage(props) {
    };
    return (
       <div>
-         <img alt="user avartar" style={style} src={userImage}></img>
+         <img alt="user avartar" style={style} src={photoURL}></img>
       </div>
    );
 }

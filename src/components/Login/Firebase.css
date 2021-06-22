@@ -1,0 +1,40 @@
+/* custom firebase login */
+.firebaseui-card-content {
+   width: 100% !important;
+   padding: 0 !important;
+}
+.firebaseui-idp-button {
+   border-radius: 10px !important;
+   padding: 10px !important;
+   width: 100% !important;
+   max-width: unset !important;
+   height: 60px !important;
+   text-align: center !important;
+}
+.firebaseui-idp-text {
+   width: 100% !important;
+   padding: 0 !important;
+   text-align: center !important;
+   font-size: 15px !important;
+   color: #fff !important;
+}
+.firebaseui-idp-facebook .firebaseui-idp-icon {
+   height: 38px !important;
+   width: 38px !important;
+   padding: 0 !important;
+}
+.firebaseui-idp-icon {
+   height: 26px !important;
+   width: 26px !important;
+   padding: 6px !important;
+}
+.firebaseui-idp-google {
+   background-color: #4385f5 !important;
+
+   /* hover:#1365f1 */
+}
+.firebaseui-idp-google .firebaseui-idp-icon-wrapper {
+   background-color: #fff !important;
+   border-radius: 2px !important;
+}
+/* fb: #465e97, hover: #2d4c96 */

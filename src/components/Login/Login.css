@@ -1,0 +1,21 @@
+.Login {
+   width: calc(44% - 8px);
+   /* background-color: yellowgreen; */
+   border-left: 1px solid #ccc;
+}
+
+.Wrapper {
+   padding: 0 38px 0;
+   display: flex;
+   flex-flow: column;
+   height: 100%;
+}
+.SignIn {
+   margin-top: 56px;
+   flex: 1;
+}
+.Term {
+   text-align: center;
+   margin: 0 0 7px;
+   font-size: 14px;
+}

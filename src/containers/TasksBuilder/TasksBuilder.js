@@ -24,10 +24,10 @@ export class TasksBuilder extends Component {
       return (
          <section className={classes.TasksBuilder}>
             {/* <Prompt
-               //Block route when have unsaved changes
-               when={this.props.isUpdated}
-               message="You have not save tasks"
-            /> */}
+                  //Block route when have unsaved changes
+                  when={this.props.isUpdated}
+                  message="You have not save tasks"
+               /> */}
             <WhiteBlock>
                {this.props.loading && <Spinner />}
                <Tasks

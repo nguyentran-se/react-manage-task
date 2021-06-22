@@ -58,6 +58,7 @@ const TaskDetail = (props) => {
                            key={key}
                            style={{
                               backgroundColor: activeItem.tag[key].bColor,
+                              border: `1px solid ${activeItem.tag[key].bColor}`,
                            }}>
                            {key.charAt(0).toUpperCase() + key.slice(1)}
                            <XIcon

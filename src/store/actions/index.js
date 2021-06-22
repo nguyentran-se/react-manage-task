@@ -12,3 +12,5 @@ export {
    addTag,
    deleteTag,
 } from "./taskAction";
+
+export { loginStart, loginSuccess, logout, logoutSuccess } from "./authAction";

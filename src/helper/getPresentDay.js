@@ -22,7 +22,9 @@ const month = time.getMonth();
 const year = time.getFullYear();
 const getPresentDay = {
    toString: () => {
-      return `${hour}:${minute} on ${DAYS[day]}, ${MONTHS[month]} ${date} ${year}`;
+      return `${hour > 10 ? hour : "0" + hour}:${
+         minute > 10 ? minute : "0" + minute
+      } on ${DAYS[day]}, ${MONTHS[month]} ${date} ${year}`;
    },
 
    hour,

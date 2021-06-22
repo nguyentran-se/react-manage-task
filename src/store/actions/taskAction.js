@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import axios from "../../axios-tasks";
+import taskApi from "../../api/taskApi";
 
 export const toggleTaskList = (topic) => {
    return { type: actionTypes.TOGGLE_TASKLIST, topic };
@@ -32,11 +32,14 @@ const fetchTasksFailed = (err) => {
 export const fetchTasks = () => {
    return (dispatch) => {
       dispatch(fetchTasksStart());
-      axios
-         .get("groups/today/tasks.json")
+
+      // axios
+      //    .get("groups/today/tasks.json")
+      taskApi
+         .getAllTasks()
          .then((response) => {
             // console.log(response.data);
-            const data = response.data;
+            const data = response;
             const changedData = data.map((task) => {
                return {
                   ...task,
@@ -71,8 +74,8 @@ const pushTaskFailed = (err) => {
 export const pushTasks = (data) => {
    return (dispatch) => {
       dispatch(pushTaskStart());
-      axios
-         .put("groups.json", data)
+      taskApi
+         .pushTasks(data)
          .then((response) => {
             dispatch(pushTaskSuccess());
          })

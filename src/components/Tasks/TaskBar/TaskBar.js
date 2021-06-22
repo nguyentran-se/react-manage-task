@@ -10,10 +10,18 @@ import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
 
 const TasksBar = (props) => {
-   const { pushTasks, groups, iconLoading, isUpdated, clearCompleted } = props;
+   const {
+      pushTasks,
+      groups,
+      iconLoading,
+      isUpdated,
+      clearCompleted,
+      userInfo,
+   } = props;
    const iconClasses = [classes.Icon];
    if (iconLoading) iconClasses.push(classes.IconLoading);
    if (!isUpdated) iconClasses.push(classes.Disabled);
+   let name = userInfo.displayName.split(" ")[0];
    // if (!isUpdated) {
    //    setTimeout(() => {
    //       iconClasses.push(classes.Disabled);
@@ -24,7 +32,7 @@ const TasksBar = (props) => {
       <section className={classes.TasksBar}>
          <div className={classes.TasksBarItems}>
             <h3>
-               Good Morning{" "}
+               Have a nice day, {name}
                {/* <span role="img" aria-label="emote">
                   &#128582;
                </span> */}
@@ -65,6 +73,7 @@ const mapStateToProps = (state) => {
       groups: state.tsk.groups,
       iconLoading: state.tsk.iconLoading,
       isUpdated: state.tsk.isUpdated,
+      userInfo: state.auth.userInfo,
    };
 };
 

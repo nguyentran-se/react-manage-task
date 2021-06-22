@@ -6,6 +6,7 @@
    justify-content: space-between;
    padding: 0 20px;
    margin-top: 10px;
+   user-select: none;
 }
 .UserName {
    line-height: 1.6;
@@ -13,4 +14,13 @@
 }
 .UserName span {
    font-size: 14px;
+   cursor: pointer;
+   transition: all linear 0.1s;
+   display: inline-block;
+}
+.UserName span:hover {
+   color: var(--primary-color);
+}
+.UserName span:active {
+   transform: translateY(2px);
 }
