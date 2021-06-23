@@ -47,6 +47,7 @@
    visibility: hidden;
    opacity: 0;
    transition: all linear 0.3s;
+   animation-play-state: paused;
 }
 .Cloud:nth-child(2):after {
    background: #fff;

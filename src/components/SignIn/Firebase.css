@@ -8,7 +8,7 @@
    padding: 10px !important;
    width: 100% !important;
    max-width: unset !important;
-   height: 60px !important;
+   height: 54px !important;
    text-align: center !important;
 }
 .firebaseui-idp-text {
@@ -19,13 +19,13 @@
    color: #fff !important;
 }
 .firebaseui-idp-facebook .firebaseui-idp-icon {
-   height: 38px !important;
-   width: 38px !important;
+   height: 34px !important;
+   width: 34px !important;
    padding: 0 !important;
 }
 .firebaseui-idp-icon {
-   height: 26px !important;
-   width: 26px !important;
+   height: 34px !important;
+   width: 34px !important;
    padding: 6px !important;
 }
 .firebaseui-idp-google {

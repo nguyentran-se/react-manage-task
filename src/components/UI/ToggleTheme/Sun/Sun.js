@@ -14,7 +14,14 @@ const Sun = (props) => {
    return (
       <div className={classes.Icon}>
          <div className={classes.Cloud}></div>
-         <div className={cloudClasses.join(" ")}></div>
+         {/* <div className={cloudClasses.join(" ")}></div> */}
+         <div
+            className={classes.Cloud}
+            style={{
+               opacity: toggle && 1,
+               visibility: toggle && "visible",
+               animationPlayState: toggle && "running",
+            }}></div>
          <div className={sunClasses.join(" ")}>
             <div className={classes.Rays}></div>
          </div>
