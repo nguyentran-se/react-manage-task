@@ -19,8 +19,6 @@
    color: #fff !important;
 }
 .firebaseui-idp-facebook .firebaseui-idp-icon {
-   height: 34px !important;
-   width: 34px !important;
    padding: 0 !important;
 }
 .firebaseui-idp-icon {
@@ -30,8 +28,17 @@
 }
 .firebaseui-idp-google {
    background-color: #4385f5 !important;
-
-   /* hover:#1365f1 */
+   transition: all 0.3s linear;
+}
+.firebaseui-idp-google:hover {
+   background-color: #1365f1 !important;
+}
+.firebaseui-idp-facebook {
+   background-color: #465e97 !important;
+   transition: all 0.3s linear !important;
+}
+.firebaseui-idp-facebook:hover {
+   background-color: #2d4c96 !important;
 }
 .firebaseui-idp-google .firebaseui-idp-icon-wrapper {
    background-color: #fff !important;

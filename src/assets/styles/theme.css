@@ -1,6 +1,6 @@
 /* normal mode */
 .App {
-   --bg-image: url("../../assets/images/theme/bg-image-light.jpg");
+   --bg-image: url("../../assets/images/theme/bg-image-light-4.jpg");
    --bg-theme-color: #fff;
    --text-color: #030303;
    --text-nav-color: #030303;
@@ -17,7 +17,7 @@
 }
 /* Light mode */
 .App.LightMode {
-   --bg-image: url("../../assets/images/theme/bg-image-light.jpg");
+   --bg-image: url("../../assets/images/theme/bg-image-light-4.jpg");
 
    --bg-theme-color: #fff;
    --text-color: #030303;

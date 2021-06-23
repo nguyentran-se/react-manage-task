@@ -2,6 +2,20 @@
    width: calc(56% - 8px);
    display: flex;
    flex-direction: column;
+   white-space: nowrap;
+   overflow: hidden;
+}
+.Slider {
+   transition: all 0.5s linear;
+}
+.BannerItem {
+   width: 100%;
+   display: inline-block;
+   opacity: 1;
+   transition: all 0.2s linear;
+}
+.BannerItem.ActiveBanner {
+   opacity: 0;
 }
 .BannerTitle {
    font-size: 44px;
@@ -11,6 +25,7 @@
    font-size: 19px;
    line-height: 22px;
    margin-bottom: 14px;
+   white-space: normal;
 }
 .BannerImage {
    display: block;
@@ -28,8 +43,8 @@
    padding: 4px;
 }
 .BtnList button {
-   width: 9px;
-   height: 9px;
+   width: 10px;
+   height: 10px;
    padding: 0;
    border-radius: 50%;
    background-color: #ccc;
@@ -41,5 +56,8 @@
 }
 
 .BtnList button:hover {
+   background-color: var(--primary-color);
+}
+button.Active {
    background-color: var(--primary-color);
 }

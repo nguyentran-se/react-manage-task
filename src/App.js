@@ -4,9 +4,9 @@ import React, { Suspense, useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import classes from "./assets/styles/theme.css";
-import Spinner from "./components/UI/Spinner/Spinner";
 import MainLayoutRoute from "./hoc/Layout/MainLayoutRoute/MainLayoutRoute";
 import * as actionCreators from "./store/actions/index";
+import Preloader from "./components/UI/Preloader/Preloader";
 // config firebase
 const config = {
    apiKey: process.env.REACT_APP_FIREBASE_API,
@@ -15,9 +15,20 @@ const config = {
 firebase.initializeApp(config);
 // lazy load
 const TasksBuilderLazy = React.lazy(() =>
-   import("./containers/TasksBuilder/TasksBuilder")
+   Promise.all([
+      import("./containers/TasksBuilder/TasksBuilder"),
+      new Promise((resolve) => setTimeout(resolve, 1500)),
+   ]).then(([moduleExports]) => moduleExports)
 );
-const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
+// const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
+// const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
+const AuthLazy = React.lazy(() =>
+   Promise.all([
+      import("./containers/Auth/Auth"),
+      new Promise((resolve) => setTimeout(resolve, 1000)),
+   ]).then(([moduleExports]) => moduleExports)
+);
+
 const App = (props) => {
    const { onLoginStart, onLoginSuccess } = props;
    useEffect(() => {
@@ -62,7 +73,7 @@ const App = (props) => {
    }
    return (
       <div className={classes.App}>
-         <Suspense fallback={<Spinner />}>{renderOnAuth}</Suspense>
+         <Suspense fallback={<Preloader />}>{renderOnAuth}</Suspense>
       </div>
    );
 };

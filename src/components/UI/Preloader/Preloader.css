@@ -1,0 +1,44 @@
+.Container {
+   position: fixed;
+   top: 28%;
+   left: 50%;
+   z-index: 9999;
+   transform: translateX(-50%);
+}
+.Text {
+   display: flex;
+   flex-direction: row;
+}
+.Part1 {
+   font-weight: 600;
+   font-size: 4rem;
+   color: var(--primary-color);
+}
+
+.Loader {
+   position: absolute;
+   left: 50%;
+   margin-top: 2rem;
+   transform: translate(-50%, -50%);
+   height: 5px;
+   width: 15rem;
+   background-color: lightgrey;
+}
+.Loading {
+   background-color: var(--primary-color);
+   width: 5rem;
+   height: 5px;
+   animation: animation 1.5s infinite;
+}
+
+@keyframes animation {
+   0% {
+      transform: translateX(0rem);
+   }
+   50% {
+      transform: translateX(10rem);
+   }
+   100% {
+      transform: translateX(0rem);
+   }
+}

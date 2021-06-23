@@ -8,3 +8,7 @@
    transition: all 0.3s linear;
    z-index: 100;
 }
+.Backdrop.CustomPreloader {
+   opacity: 1 !important;
+   background-color: var(--bg-theme-color);
+}
