@@ -26,7 +26,7 @@ const SignIn = () => {
             </div>
             <p className={classes.Term}>Peppers © 2021 | TASK MANAGEMENT</p>
             <p className={classes.Term}>
-               This app get ideas UI from <strong>any.do</strong> site{" "}
+               This app get UI idea from <strong>any.do</strong> site{" "}
             </p>
          </div>
       </section>

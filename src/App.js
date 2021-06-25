@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import classes from "./assets/styles/theme.css";
@@ -14,45 +14,52 @@ const config = {
 };
 firebase.initializeApp(config);
 // lazy load
+// const TasksBuilderLazy = React.lazy(() =>
+//    Promise.all([
+//       import("./containers/TasksBuilder/TasksBuilder"),
+//       new Promise((resolve) => setTimeout(resolve, 1500)),
+//    ]).then(([moduleExports]) => moduleExports)
+// );
 const TasksBuilderLazy = React.lazy(() =>
-   Promise.all([
-      import("./containers/TasksBuilder/TasksBuilder"),
-      new Promise((resolve) => setTimeout(resolve, 1500)),
-   ]).then(([moduleExports]) => moduleExports)
+   import("./containers/TasksBuilder/TasksBuilder")
 );
-// const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
-// const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
-const AuthLazy = React.lazy(() =>
-   Promise.all([
-      import("./containers/Auth/Auth"),
-      new Promise((resolve) => setTimeout(resolve, 1000)),
-   ]).then(([moduleExports]) => moduleExports)
-);
+const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
+// const AuthLazy = React.lazy(() =>
+//    Promise.all([
+//       import("./containers/Auth/Auth"),
+//       new Promise((resolve) => setTimeout(resolve, 1000)),
+//    ]).then(([moduleExports]) => moduleExports)
+// );
 
 const App = (props) => {
    const { onLoginStart, onLoginSuccess } = props;
+   const [preloader, setPreloader] = useState(true);
    useEffect(() => {
+      let timeout = setTimeout(() => {
+         // console.log("TIMEOUT123");
+         setPreloader(false);
+      }, 1500);
       const unregisterAuthObserver = firebase
          .auth()
          .onAuthStateChanged((user) => {
-            onLoginStart();
-
             if (!user) {
-               props.onLogout();
-               console.log("NO USER");
+               // props.onLogout();
                return;
             }
+            onLoginStart();
 
             user.getIdToken().then((response) => {
                const token = response;
-               console.log("Has user and token");
                const { uid, displayName, photoURL } = user;
                onLoginSuccess(token, uid, displayName, photoURL);
             });
          });
-      return () => unregisterAuthObserver();
+      return () => {
+         clearTimeout(timeout);
+         unregisterAuthObserver();
+      };
    }, []);
-   console.log(props.isAuthenticated);
+
    let renderOnAuth = (
       <Switch>
          <Route exact path="/" component={AuthLazy} />
@@ -73,7 +80,8 @@ const App = (props) => {
    }
    return (
       <div className={classes.App}>
-         <Suspense fallback={<Preloader />}>{renderOnAuth}</Suspense>
+         {preloader && <Preloader />}
+         <Suspense fallback={<div></div>}>{renderOnAuth}</Suspense>
       </div>
    );
 };

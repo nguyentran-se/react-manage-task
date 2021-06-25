@@ -3,6 +3,7 @@ const initialState = {
    token: localStorage.getItem("token") || null,
    error: null,
    loading: false,
+   isLogout: false,
    userInfo: {
       userId: localStorage.getItem("userId") || null,
       displayName: localStorage.getItem("displayName") || null,
@@ -28,6 +29,7 @@ const authReducer = (state = initialState, action) => {
       case actionTypes.LOGOUT_START:
          return {
             ...state,
+            isLogout: true,
             loading: true,
          };
       case actionTypes.LOGOUT_SUCCESS:

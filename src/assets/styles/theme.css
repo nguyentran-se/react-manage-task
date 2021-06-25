@@ -39,6 +39,7 @@
    --sun-border: #fff;
 
    --hover-modal-control: #f6f6f6;
+   --bg-first-visit: #252525;
 }
 /* Dark mode */
 .App.DarkMode {
@@ -65,4 +66,5 @@
    --task-detail-icon: #8e8e92;
    --sun-border: var(--text-color);
    --hover-modal-control: #424242;
+   --bg-first-visit: #f6f6f6;
 }

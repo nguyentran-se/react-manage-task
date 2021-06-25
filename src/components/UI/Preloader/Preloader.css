@@ -28,6 +28,7 @@
    background-color: var(--primary-color);
    width: 5rem;
    height: 5px;
+   transition: all 0.3s linear;
    animation: animation 1.5s infinite;
 }
 

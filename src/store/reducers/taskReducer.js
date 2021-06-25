@@ -32,6 +32,7 @@ const reducer = (state = initialState, action) => {
    } = action;
    switch (type) {
       case actionTypes.TOGGLE_TASKLIST:
+         if (state.groups.today.tasks.length === 0) return state;
          let updatedState = { ...state };
          updatedState.groups = { ...state.groups };
          updatedState.groups[topic] = { ...state.groups[topic] };

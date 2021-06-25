@@ -39,3 +39,11 @@
    transform: none;
    box-shadow: none;
 }
+
+.Button.ButtonPopup {
+   background-color: var(--bg-first-visit);
+   padding: 8px 15px;
+   line-height: 1;
+   margin-bottom: 10px;
+   font-weight: 700;
+}
