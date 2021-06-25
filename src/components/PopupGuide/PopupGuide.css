@@ -16,7 +16,7 @@
    height: 100%;
    border-radius: inherit;
 
-   z-index: 9999;
+   z-index: 999;
    background-color: transparent;
    opacity: 0.8;
    /* box-shadow: 0px 0px 8px 1200px var(--bg-first-visit); */
@@ -40,7 +40,7 @@
 
    /* background-color: var(--hover-nav-color); */
    background-color: var(--bg-theme-color);
-   z-index: 99999;
+   z-index: 9991;
 }
 
 .Content {

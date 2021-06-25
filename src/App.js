@@ -81,6 +81,7 @@ const App = (props) => {
    return (
       <div className={classes.App}>
          {preloader && <Preloader />}
+         {/* <Preloader /> */}
          <Suspense fallback={<div></div>}>{renderOnAuth}</Suspense>
       </div>
    );

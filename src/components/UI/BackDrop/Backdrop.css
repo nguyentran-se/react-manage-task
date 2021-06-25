@@ -6,7 +6,7 @@
    left: 0;
    background-color: #333;
    transition: all 0.3s linear;
-   z-index: 100;
+   z-index: 9999;
 }
 .Backdrop.CustomPreloader {
    opacity: 1 !important;
