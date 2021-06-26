@@ -12,10 +12,10 @@ const Layout = (props) => {
    useEffect(() => {
       if (localStorage.getItem("first-visit")) {
          setGuide(false);
-      } else {
-         localStorage.setItem("first-visit", true);
+         console.log("guide false");
       }
    }, []);
+   console.log(123);
    return (
       <section className={classes.Layout}>
          <SideBar />

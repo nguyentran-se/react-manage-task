@@ -20,6 +20,9 @@ const Banner = (props) => {
             return prevIndex === length - 1 ? 0 : prevIndex + 1;
          });
       }, 5000);
+      return () => {
+         clearTimeout(timeout);
+      };
    }, [index]);
 
    const btnClickHandler = (idx) => {

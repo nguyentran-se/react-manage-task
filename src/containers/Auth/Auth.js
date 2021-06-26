@@ -7,10 +7,10 @@ import { connect } from "react-redux";
 const Auth = (props) => {
    const [preloader, setPreloader] = useState(true);
    useEffect(() => {
-      console.log("AUTH");
+      // console.log("AUTH");
       let timeout;
       if (props.isLogout) {
-         console.log("AUTH-IF");
+         // console.log("AUTH-IF");
          timeout = setTimeout(() => setPreloader(false), 1500);
       }
       return () => {

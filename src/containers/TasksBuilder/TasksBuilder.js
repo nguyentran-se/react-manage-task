@@ -14,6 +14,8 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 export class TasksBuilder extends Component {
    componentDidMount() {
       this.props.fetchTasks(this.props.token, this.props.userId);
+      if (!localStorage.getItem("first-visit"))
+         localStorage.setItem("first-visit", true);
    }
    componentDidUpdate() {
       if (this.props.isUpdated)

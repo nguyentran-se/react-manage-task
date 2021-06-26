@@ -35,6 +35,7 @@ const App = (props) => {
    const { onLoginStart, onLoginSuccess } = props;
    const [preloader, setPreloader] = useState(true);
    useEffect(() => {
+      // console.log("[APP] useEffect");
       let timeout = setTimeout(() => {
          // console.log("TIMEOUT123");
          setPreloader(false);
@@ -46,8 +47,8 @@ const App = (props) => {
                // props.onLogout();
                return;
             }
-            onLoginStart();
 
+            onLoginStart();
             user.getIdToken().then((response) => {
                const token = response;
                const { uid, displayName, photoURL } = user;
@@ -74,10 +75,11 @@ const App = (props) => {
                path="/tasks/today"
                component={TasksBuilderLazy}
             />
-            <Redirect to="/tasks/today" />
+            {/* <Redirect to="/tasks/today" /> */}
          </Switch>
       );
    }
+   // console.log("[APP] render");
    return (
       <div className={classes.App}>
          {preloader && <Preloader />}
