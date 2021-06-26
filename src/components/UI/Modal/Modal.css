@@ -1,6 +1,6 @@
 .Modal {
    position: fixed;
-   z-index: 500;
+   z-index: 9999;
    background-color: var(--task-adding-input);
    width: 70%;
    left: 50%;

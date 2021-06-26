@@ -8,7 +8,8 @@
    --fw-medium-level: 500;
    --fw-low-level: 400;
    --hoversb-icon-color: #d8d8d8;
-   --hover-nav-color: #f6f6f6;
+   /* --hover-nav-color: #f6f6f6; */
+   --hover-nav-color: rgba(22, 24, 35, 0.05);
    --sidebar-icon-color: #acacac;
    --main-icon-color: #030303;
    --primary-color: #0080ff;
@@ -23,7 +24,9 @@
    --text-color: #030303;
    --text-nav-color: #030303;
    --hoversb-icon-color: #d8d8d8;
-   --hover-nav-color: #f6f6f6;
+   /* --hover-nav-color: #f6f6f6; */
+   --hover-nav-color: rgba(22, 24, 35, 0.05);
+
    --sidebar-icon-color: #acacac;
    --main-icon-color: #030303;
    --primary-color: #0080ff;

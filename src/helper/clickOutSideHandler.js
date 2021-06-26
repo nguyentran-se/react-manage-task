@@ -5,6 +5,8 @@ const clickOutSideHandler = (ref, callback) => {
        * Alert if clicked on outside of element
        */
       function handleClickOutside(event) {
+         // console.log(ref.current);
+         // console.log(event.target);
          if (ref.current && !ref.current.contains(event.target)) {
             callback(false);
          }

@@ -33,6 +33,7 @@ const AuthLazy = React.lazy(() => import("./containers/Auth/Auth"));
 
 const App = (props) => {
    const { onLoginStart, onLoginSuccess } = props;
+   const [isSignedIn, setIsSignedIn] = useState(false);
    const [preloader, setPreloader] = useState(true);
    useEffect(() => {
       // console.log("[APP] useEffect");
@@ -44,9 +45,10 @@ const App = (props) => {
          .auth()
          .onAuthStateChanged((user) => {
             if (!user) {
-               // props.onLogout();
                return;
             }
+
+            setIsSignedIn(true);
 
             onLoginStart();
             user.getIdToken().then((response) => {
@@ -67,7 +69,7 @@ const App = (props) => {
          <Redirect to="/" />
       </Switch>
    );
-   if (props.isAuthenticated) {
+   if (isSignedIn || props.isAuthenticated) {
       renderOnAuth = (
          <Switch>
             <MainLayoutRoute
@@ -75,13 +77,13 @@ const App = (props) => {
                path="/tasks/today"
                component={TasksBuilderLazy}
             />
-            {/* <Redirect to="/tasks/today" /> */}
+            <Redirect to="/tasks/today" />
          </Switch>
       );
    }
    // console.log("[APP] render");
    return (
-      <div className={classes.App}>
+      <div className={`${classes.App} ${localStorage.getItem("theme")}`}>
          {preloader && <Preloader />}
          {/* <Preloader /> */}
          <Suspense fallback={<div></div>}>{renderOnAuth}</Suspense>

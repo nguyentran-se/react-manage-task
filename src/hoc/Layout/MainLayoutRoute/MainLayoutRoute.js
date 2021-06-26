@@ -10,12 +10,10 @@ import { useState } from "react";
 const Layout = (props) => {
    const [Guide, setGuide] = useState(true);
    useEffect(() => {
-      if (localStorage.getItem("first-visit")) {
+      if (localStorage.getItem("first-visit") === "false") {
          setGuide(false);
-         console.log("guide false");
       }
    }, []);
-   console.log(123);
    return (
       <section className={classes.Layout}>
          <SideBar />

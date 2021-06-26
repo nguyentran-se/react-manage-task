@@ -1,0 +1,63 @@
+.Notification {
+   overflow-y: auto;
+   height: 316px;
+   padding-bottom: 14px;
+}
+.Notification::-webkit-scrollbar {
+   width: 6px;
+   background-color: var(--transparent-color);
+   /* display: none; */
+}
+.Notification::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: var(--sidebar-icon-color);
+}
+
+.Header {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-end;
+   font-size: 14px;
+   padding: 14px 16px;
+}
+.Header h3 {
+   font-size: 16px;
+}
+.Header h4 {
+   cursor: pointer;
+}
+.ListWrapper {
+   padding: 0 4px;
+}
+
+.List {
+   display: flex;
+   flex-flow: column;
+}
+
+.Item {
+   width: 100%;
+   display: flex;
+   align-items: center;
+   padding: 10px;
+   cursor: pointer;
+   border-radius: 10px;
+   transition: all 0.1s linear;
+}
+
+.Item:hover {
+   background-color: var(--hover-nav-color);
+}
+
+.Img {
+   width: 57px;
+   height: 57px;
+   border-radius: 50%;
+   margin-right: 10px;
+}
+
+.Content {
+}
+.Content p {
+   margin: 0 0 6px;
+}

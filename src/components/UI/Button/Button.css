@@ -9,15 +9,16 @@
    transition: all linear 0.1s;
    user-select: none;
 }
-.Button.ButtonPos {
+.Button.ButtonMail {
    position: absolute;
-   top: 72px;
+   top: 86px;
    left: 102px;
-   padding: 0 14px;
+   padding: 7px 14px;
+   line-height: 1;
    opacity: 1;
    transition: all linear 0.3s;
 }
-.Button.ButtonPos.ButtonVisi {
+.Button.ButtonMail.ButtonVisi {
    top: 39px;
    opacity: 0;
 }

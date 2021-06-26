@@ -42,7 +42,7 @@ const PopupGuide = () => {
          note: "NOTE: remember to save your work before leaving page",
          style: {
             top: "138px",
-            left: "562px",
+            left: "593px",
             width: "138px",
             height: "39px",
             borderRadius: "0 20px 20px 0",
@@ -85,6 +85,7 @@ const PopupGuide = () => {
       },
    ];
    const btnClickHandler = () => {
+      if (id === 4) localStorage.setItem("first-visit", false);
       setId((prevId) => prevId + 1);
    };
    // console.log(id);
