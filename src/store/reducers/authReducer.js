@@ -37,7 +37,12 @@ const authReducer = (state = initialState, action) => {
             ...state,
             token: null,
             loading: false,
-            userInfo: null,
+            userInfo: {
+               ...state.userInfo,
+               userId: null,
+               displayName: null,
+               photoURL: null,
+            },
          };
       case actionTypes.LOGOUT_FAILED:
          return {

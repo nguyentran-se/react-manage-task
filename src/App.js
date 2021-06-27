@@ -44,11 +44,10 @@ const App = (props) => {
       const unregisterAuthObserver = firebase
          .auth()
          .onAuthStateChanged((user) => {
+            setIsSignedIn(!!user);
             if (!user) {
                return;
             }
-
-            setIsSignedIn(true);
 
             onLoginStart();
             user.getIdToken().then((response) => {
@@ -62,6 +61,8 @@ const App = (props) => {
          unregisterAuthObserver();
       };
    }, []);
+   // console.log("[APP] rendering");
+   // console.log(props.isAuthenticated);
 
    let renderOnAuth = (
       <Switch>
@@ -70,6 +71,7 @@ const App = (props) => {
       </Switch>
    );
    if (isSignedIn || props.isAuthenticated) {
+      // console.log("[APP] ROUTE TASK");
       renderOnAuth = (
          <Switch>
             <MainLayoutRoute
@@ -81,7 +83,6 @@ const App = (props) => {
          </Switch>
       );
    }
-   // console.log("[APP] render");
    return (
       <div className={`${classes.App} ${localStorage.getItem("theme")}`}>
          {preloader && <Preloader />}

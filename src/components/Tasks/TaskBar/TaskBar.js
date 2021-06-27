@@ -24,7 +24,7 @@ const TasksBar = (props) => {
    if (!isUpdated) iconClasses.push(classes.Disabled);
    let name;
    let userId;
-   if (userInfo) {
+   if (userInfo.displayName) {
       name = userInfo.displayName.split(" ")[0];
       userId = userInfo.userId;
    }
@@ -34,6 +34,7 @@ const TasksBar = (props) => {
    //    }, 3000);
    // }
    const hasCompleted = groups.today.tasks.some((task) => task.isCompleted);
+
    return (
       <section className={classes.TasksBar}>
          <div className={classes.TasksBarItems}>

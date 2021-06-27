@@ -1,5 +1,4 @@
 import React from "react";
-import Aux from "../../../../hoc/Auxilary/Auxilary";
 import classes from "./Notification.css";
 import banner3 from "../../../../assets/images/banner/banner-3.jpg";
 
