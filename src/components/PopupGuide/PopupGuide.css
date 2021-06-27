@@ -44,5 +44,7 @@
 }
 
 .Content {
-   margin-bottom: 18px;
+   margin: 8px 0 12px;
+   text-align: left;
+   line-height: 1.2;
 }

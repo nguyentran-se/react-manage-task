@@ -75,7 +75,7 @@ const ToolBar = (props) => {
                <textarea
                   value={msg}
                   onChange={(e) => setMsg(e.target.value)}
-                  placeholder="Send feedback to Peppers to make this app better! Feel free cuz he will not know who u are."
+                  placeholder="Send feedback to Peppers to make this app better! Many thanks for your contributions!"
                />
             </Dialog>
             <Button

@@ -7,7 +7,7 @@ const PopupGuide = () => {
    const popupList = [
       {
          id: 0,
-         content: "Add and delete your task here",
+         content: "Manage your tasks such as: ADD or DELETE here",
          style: {
             top: "200px",
             left: "320px",
@@ -17,13 +17,16 @@ const PopupGuide = () => {
          },
          popupStyle: {
             top: "140px",
-            right: "-240px",
+            right: "-259px",
+            width: "218px",
          },
+         btnText: "OK, I got it!",
       },
       {
          id: 1,
-         content: "Edit your content of task here.",
-         note: "NOTE: remember to select tag to edit",
+         content:
+            "Edit your content of task and add some tags to highlight your task",
+         note: "Remember to select task to edit",
          style: {
             top: "200px",
             left: "790px",
@@ -35,11 +38,12 @@ const PopupGuide = () => {
             top: "140px",
             left: "-240px",
          },
+         btnText: "Yah, next guide",
       },
       {
          id: 2,
-         content: "Delete all completed tasks and saving your work",
-         note: "NOTE: remember to save your work before leaving page",
+         content: "Delete all completed tasks and save your work",
+         note: "Remember to save your work before leaving page",
          style: {
             top: "138px",
             left: "593px",
@@ -49,8 +53,10 @@ const PopupGuide = () => {
          },
          popupStyle: {
             top: "62px",
-            left: "-33px",
+            left: "-46px",
+            width: "222px",
          },
+         btnText: "OK, I got it!",
       },
       {
          id: 3,
@@ -67,6 +73,7 @@ const PopupGuide = () => {
             top: "90px",
             left: "220px",
          },
+         btnText: "OK, I got it!",
       },
       {
          id: 4,
@@ -82,6 +89,7 @@ const PopupGuide = () => {
             top: "90px",
             left: "12px",
          },
+         btnText: "OK, I got it!",
       },
    ];
    const btnClickHandler = () => {
@@ -98,14 +106,28 @@ const PopupGuide = () => {
                style={popup.style}>
                <div className={classes.PopupGuide}></div>
                <div className={classes.Popup} style={popup.popupStyle}>
-                  <p className={popup.Content}>
+                  <p className={classes.Content}>
+                     <span
+                        style={{
+                           color: "rgb(249, 210, 31)",
+                           fontWeight: "600",
+                        }}>
+                        GUIDE:{" "}
+                     </span>
                      {popup.content}
                      <br />
-                     <br />
-                     <span>{popup.note}</span>
+                     {popup.note && (
+                        <span>
+                           <span
+                              style={{ color: "#FF3D56", fontWeight: "600" }}>
+                              NOTE:{" "}
+                           </span>
+                           {popup.note}
+                        </span>
+                     )}
                   </p>
                   <Button clicked={btnClickHandler} btnType={["ButtonPopup"]}>
-                     OK, I got it!
+                     {popup.btnText}
                   </Button>
                </div>
             </div>
