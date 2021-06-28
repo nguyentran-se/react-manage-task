@@ -11,6 +11,7 @@ import Preloader from "./components/UI/Preloader/Preloader";
 const config = {
    apiKey: process.env.REACT_APP_FIREBASE_API,
    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+   projectId: "task-management-d625d",
 };
 firebase.initializeApp(config);
 // lazy load
@@ -85,7 +86,7 @@ const App = (props) => {
    }
    return (
       <div className={`${classes.App} ${localStorage.getItem("theme")}`}>
-         {/* {preloader && <Preloader />} */}
+         {preloader && <Preloader />}
          {/* <Preloader /> */}
          <Suspense fallback={<div></div>}>{renderOnAuth}</Suspense>
       </div>

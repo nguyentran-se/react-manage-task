@@ -31,6 +31,7 @@ const ToolBar = (props) => {
    const notiClickHandler = (e) => {
       setIsNotiClicked(!isNotiClicked);
    };
+
    const wrapperInfoRef = useRef(null);
    const wrapperMailRef = useRef(null);
    const wrapperNotiRef = useRef(null);
@@ -63,9 +64,10 @@ const ToolBar = (props) => {
             <div className={classes.Item} onClick={(e) => notiClickHandler(e)}>
                <BellIcon className={classes.Icon} />
             </div>
-            <Dialog isClicked={isNotiClicked} customNoti>
-               <Notification />
-            </Dialog>
+            {/* <Dialog isClicked={isNotiClicked} customNoti> */}
+            <Notification isClicked={isNotiClicked} />
+            {/* </Dialog> */}
+            {/* <div className={classes.Count}>3</div> */}
          </div>
          <div className={classes.ItemWrapper} ref={wrapperMailRef}>
             <div className={classes.Item} onClick={(e) => mailClickHandler(e)}>

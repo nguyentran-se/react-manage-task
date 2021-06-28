@@ -22,9 +22,14 @@
 }
 .Header h3 {
    font-size: 16px;
+   color: rgb(249, 210, 31);
 }
 .Header h4 {
    cursor: pointer;
+   transition: all 0.3s linear;
+}
+.Header h4:hover {
+   color: var(--primary-color);
 }
 .ListWrapper {
    padding: 0 4px;
@@ -42,22 +47,79 @@
    padding: 10px;
    cursor: pointer;
    border-radius: 10px;
-   transition: all 0.1s linear;
+   font-weight: 500;
+
+   transition: all 0.3s linear;
+}
+.Item.Read {
+   font-weight: normal;
+}
+.Item.Read .Content span {
+   color: var(--text-color);
 }
 
+.Item.Read .BlueDot {
+   visibility: hidden;
+   opacity: 0;
+}
 .Item:hover {
    background-color: var(--hover-nav-color);
 }
 
 .Img {
-   width: 57px;
-   height: 57px;
+   width: 54px;
+   height: 54px;
    border-radius: 50%;
    margin-right: 10px;
 }
 
 .Content {
+   transition: all 0.3s linear;
+   flex: 1;
 }
 .Content p {
+   font-size: 13px;
    margin: 0 0 6px;
+   padding-right: 10px;
+}
+.Item .Content span {
+   color: var(--primary-color);
+   font-weight: 500;
+   transition: all 0.3s linear;
+   font-size: 11px;
+}
+.BlueDot {
+   padding-left: 10px;
+   height: 10px;
+   border-radius: 50%;
+   background-color: var(--primary-color);
+   transition: all 0.3s linear;
+   opacity: 1;
+}
+.Count {
+   position: absolute;
+   top: 2px;
+   left: 24px;
+   width: 18px;
+   height: 18px;
+   border-radius: 50%;
+
+   text-align: center;
+   font-size: 12px;
+   font-weight: 500;
+   line-height: 19px;
+   user-select: none;
+   cursor: pointer;
+
+   visibility: visible;
+   opacity: 1;
+   transition: all 0.3s linear;
+
+   color: #fff;
+   background-color: #ff3d56;
+}
+
+.Count.HideCount {
+   visibility: hidden;
+   opacity: 0;
 }

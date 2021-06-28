@@ -8,6 +8,7 @@
    font-weight: var(--fw-low-level);
    padding-top: 16px;
    font-size: 13px;
+   user-select: none;
 }
 .Header {
    --height-header: 62px;
