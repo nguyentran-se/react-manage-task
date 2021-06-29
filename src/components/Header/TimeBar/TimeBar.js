@@ -21,7 +21,7 @@ const TimeBar = () => {
    const [toggleStart, setToggleStart] = useState(false);
 
    let totalSecond = time.hour * 60 * 60 + time.min * 60 + time.sec;
-   console.log(totalSecond);
+   // console.log(totalSecond);
    // useEffect(() => {
    //    let countTime;
    //    if (toggleStart) {
