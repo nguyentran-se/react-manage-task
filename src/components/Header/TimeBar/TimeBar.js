@@ -21,6 +21,7 @@ const TimeBar = () => {
    const [toggleStart, setToggleStart] = useState(false);
 
    let totalSecond = time.hour * 60 * 60 + time.min * 60 + time.sec;
+   console.log(totalSecond);
    // useEffect(() => {
    //    let countTime;
    //    if (toggleStart) {
@@ -87,7 +88,9 @@ const TimeBar = () => {
    }, [time, toggleStart, rest]);
    // set disabled rest input
    const emptyTime = time.hour === "" && time.min === "" && time.sec === "";
-
+   const validateInput = (value) => {
+      return !isNaN(value) && (+value > 0 || value === "");
+   };
    return (
       <div className={classes.TimeBar}>
          <div className={classes.Time}>
@@ -102,19 +105,31 @@ const TimeBar = () => {
             <TimeInput
                placeholder="hour"
                value={time.isWorkDone ? "" : time.hour}
-               changed={(e) => setTime({ ...time, hour: e.target.value })}
+               changed={(e) =>
+                  validateInput(e.target.value) &&
+                  setTime({ ...time, hour: +e.target.value || "" })
+               }
             />
             <span>:</span>
             <TimeInput
                placeholder="min"
                value={time.isWorkDone ? "" : time.min}
-               changed={(e) => setTime({ ...time, min: e.target.value })}
+               changed={(e) =>
+                  validateInput(e.target.value) &&
+                  setTime({ ...time, min: +e.target.value || "" })
+               }
             />
             <span>:</span>
             <TimeInput
                placeholder="sec"
                value={time.isWorkDone ? "" : time.sec}
-               changed={(e) => setTime({ ...time, sec: e.target.value })}
+               changed={(e) =>
+                  validateInput(e.target.value) &&
+                  setTime({
+                     ...time,
+                     sec: +e.target.value || "",
+                  })
+               }
                inputCustom={["MediumSize"]}
             />
             <h4 className={time.isWorkDone ? classes.HighLight : undefined}>
@@ -123,14 +138,20 @@ const TimeBar = () => {
             <TimeInput
                placeholder="min"
                value={emptyTime ? "" : rest.min}
-               changed={(e) => setRest({ ...rest, min: e.target.value })}
+               changed={(e) =>
+                  validateInput(e.target.value) &&
+                  setRest({ ...rest, min: +e.target.value || "" })
+               }
                disabledRest={emptyTime}
             />
             <span>:</span>
             <TimeInput
                placeholder="sec"
                value={emptyTime ? "" : rest.sec}
-               changed={(e) => setRest({ ...rest, sec: e.target.value })}
+               changed={(e) =>
+                  validateInput(e.target.value) &&
+                  setRest({ ...rest, sec: +e.target.value || "" })
+               }
                inputCustom={["MediumSize"]}
                disabledRest={emptyTime}
             />

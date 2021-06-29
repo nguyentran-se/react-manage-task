@@ -64,9 +64,11 @@
    margin-top: 29px;
    display: flex;
    align-items: center;
+   flex-wrap: wrap;
 }
 .AddTagTitle {
    padding: 6px 8px;
+   margin-bottom: 8px;
    border: 1px dashed var(--bg-counter-color);
    font-size: 13px;
    display: inline-block;
@@ -125,6 +127,7 @@
 
    padding: 6px 8px;
    margin-right: 10px;
+   margin-bottom: 8px;
    border-radius: 160px;
    font-size: 13px;
 

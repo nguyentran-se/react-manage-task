@@ -5,10 +5,7 @@ const parseSecToTime = (totalSecond, hasRest = false) => {
    let min = Math.floor(divisor_for_minutes / 60);
    let divisor_for_seconds = divisor_for_minutes % 60;
    let sec = Math.ceil(divisor_for_seconds);
-   if (hasRest) {
-      // if (min === 0) return { rest: sec };
-      return { min, sec };
-   }
+   console.log("[parSec]" + sec);
    return {
       hour,
       min,

@@ -40,7 +40,7 @@ export class TasksBuilder extends Component {
                />
                <TaskAdding addTask={this.props.addTask} />
             </WhiteBlock>
-            <WhiteBlock>
+            <WhiteBlock customResponsive>
                <TaskDetail />
             </WhiteBlock>
          </section>

@@ -16,3 +16,9 @@
    flex-direction: column;
    /* padding: 26px 48px 14px 24px; */
 }
+
+@media (max-height: 670px) {
+   .TasksBuilder {
+      height: 390px;
+   }
+}
