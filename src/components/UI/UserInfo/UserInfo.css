@@ -3,7 +3,6 @@
    display: flex;
    height: 120px;
    align-items: center;
-   justify-content: space-between;
    padding: 0 20px;
    margin-top: 10px;
    user-select: none;
@@ -11,6 +10,13 @@
 .UserName {
    line-height: 1.6;
    font-size: 16px;
+   margin-left: 20px;
+   overflow: hidden;
+}
+.UserName h3 {
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
 }
 .UserName span {
    font-size: 14px;

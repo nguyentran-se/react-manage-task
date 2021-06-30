@@ -73,7 +73,7 @@ const PopupGuide = () => {
             top: "90px",
             left: "220px",
          },
-         btnText: "OK, I got it!",
+         btnText: "Next for me",
       },
       {
          id: 4,
