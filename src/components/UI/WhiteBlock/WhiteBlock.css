@@ -12,4 +12,13 @@
    .WhiteBlock.Custom {
       overflow: auto;
    }
+   .WhiteBlock.Custom::-webkit-scrollbar {
+      width: 6px;
+      background-color: var(--transparent-color);
+      /* display: none; */
+   }
+   .WhiteBlock.Custom::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: var(--sidebar-icon-color);
+   }
 }
