@@ -1,5 +1,5 @@
 import axios from "axios";
-import queryString from "query-string";
+// import queryString from "query-string";
 import firebase from "firebase/app";
 import "firebase/auth";
 
@@ -8,7 +8,7 @@ const axiosClient = axios.create({
    headers: {
       "content-type": "application/json",
    },
-   paramsSerializer: (params) => queryString.stringify(params),
+   // paramsSerializer: (params) => queryString.stringify(params),
 });
 
 const getFirebaseToken = async () => {
