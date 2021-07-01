@@ -12,6 +12,10 @@ const config = {
    apiKey: process.env.REACT_APP_FIREBASE_API,
    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
    projectId: "task-management-d625d",
+   databaseURL: "https://task-management-d625d-default-rtdb.firebaseio.com/", // Realtime Database
+   storageBucket: "task-management-d625d.com", // Storage
+   messagingSenderId: "123456789", // Cloud Messaging
+   //   measurementId: "G-12345"
 };
 firebase.initializeApp(config);
 // lazy load
@@ -37,9 +41,7 @@ const App = (props) => {
    const [isSignedIn, setIsSignedIn] = useState(false);
    const [preloader, setPreloader] = useState(true);
    useEffect(() => {
-      // console.log("[APP] useEffect");
       let timeout = setTimeout(() => {
-         // console.log("TIMEOUT123");
          setPreloader(false);
       }, 1500);
       const unregisterAuthObserver = firebase
@@ -49,11 +51,15 @@ const App = (props) => {
             if (!user) {
                return;
             }
+            // console.log(user.refreshToken);
 
             onLoginStart();
             user.getIdToken().then((response) => {
+               // console.log("[getTOKEN]");
                const token = response;
                const { uid, displayName, photoURL } = user;
+               props.fetchTasks(token, uid);
+
                onLoginSuccess(token, uid, displayName, photoURL);
             });
          });
@@ -95,6 +101,8 @@ const App = (props) => {
 
 const mapStateToProps = (state) => ({
    isAuthenticated: state.auth.token !== null,
+   token: state.auth.token,
+   userId: state.auth.userInfo.userId,
 });
 
 const mapDispatchToProps = (dispatch) => {
@@ -105,6 +113,8 @@ const mapDispatchToProps = (dispatch) => {
             actionCreators.loginSuccess(token, userId, displayName, photoURL)
          ),
       onLogout: () => dispatch(actionCreators.logoutSuccess()),
+      fetchTasks: (token, userId) =>
+         dispatch(actionCreators.fetchTasks(token, userId)),
    };
 };
 

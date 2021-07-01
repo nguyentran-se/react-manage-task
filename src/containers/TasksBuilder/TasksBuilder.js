@@ -13,7 +13,7 @@ import Spinner from "../../components/UI/Spinner/Spinner";
 // import Aux from "../../hoc/Auxilary/Auxilary";
 export class TasksBuilder extends Component {
    componentDidMount() {
-      this.props.fetchTasks(this.props.token, this.props.userId);
+      // this.props.fetchTasks(this.props.token, this.props.userId);
       if (!localStorage.getItem("first-visit"))
          localStorage.setItem("first-visit", true);
    }
@@ -61,8 +61,8 @@ const mapDispatchToProps = (dispatch) => {
    return {
       toggleTaskList: (topic) => dispatch(actionCreators.toggleTaskList(topic)),
       addTask: (value) => dispatch(actionCreators.addTask(value)),
-      fetchTasks: (token, userId) =>
-         dispatch(actionCreators.fetchTasks(token, userId)),
+      // fetchTasks: (token, userId) =>
+      //    dispatch(actionCreators.fetchTasks(token, userId)),
    };
 };
 
