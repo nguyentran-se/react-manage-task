@@ -1,0 +1,21 @@
+.Wrapper {
+   padding: 0 16px;
+   cursor: pointer;
+   font-size: 14px;
+   transition: all 0.3s linear;
+   font-weight: var(--fw-medium-level);
+}
+.Wrapper:hover {
+   background-color: var(--hover-nav-color);
+}
+.DropItem {
+   display: flex;
+   align-items: center;
+   padding: 10px 0;
+   justify-content: space-between;
+   border-bottom: thin solid var(--text-nav-color);
+}
+
+.Icon {
+   width: 20px;
+}

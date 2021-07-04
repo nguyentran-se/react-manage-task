@@ -30,7 +30,7 @@
    padding: 0 20px;
 }
 .DropBody {
-   transition: height linear 0.3s;
+   /* transition: height linear 0.3s; */
    overflow-y: hidden;
 }
 
@@ -54,4 +54,19 @@
 }
 .DropDown.ShowDrop .Icon {
    transform: rotate(180deg);
+}
+
+.Animation-enter {
+   opacity: 0;
+}
+.Animation-enter-active {
+   opacity: 1;
+   transition: all 0.3s linear;
+}
+.Animation-exit {
+   opacity: 1;
+}
+.Animation-exit-active {
+   opacity: 0;
+   transition: all 0.3s linear;
 }

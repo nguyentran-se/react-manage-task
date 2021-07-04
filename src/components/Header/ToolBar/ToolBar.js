@@ -10,34 +10,38 @@ import clickOutSideHandler from "../../../helper/clickOutSideHandler";
 import Button from "../../UI/Button/Button";
 import Dialog from "./Dialog/Dialog";
 import Notification from "./Notification/Notification";
+import Setting from "./Setting/Setting";
 import Tips from "./Tips/Tips";
 import classes from "./ToolBar.css";
-
 const ToolBar = (props) => {
    const { token, userId } = props;
    // clickoutside
    //icon clicked
-   const [isInfoClicked, setIsInfoClicked] = useState(false);
-   const [isMailClicked, setIsMailClicked] = useState(false);
+   const [isSettingClicked, setIsSettingClicked] = useState(false);
    const [isNotiClicked, setIsNotiClicked] = useState(false);
-   const infoClickHandler = (e) => {
-      // console.log(wrapperInfoRef.current);
-      // console.log(e.target);
-      setIsInfoClicked(!isInfoClicked);
-   };
-   const mailClickHandler = (e) => {
-      setIsMailClicked(!isMailClicked);
+   const [isMailClicked, setIsMailClicked] = useState(false);
+   const [isInfoClicked, setIsInfoClicked] = useState(false);
+
+   const settingClickHandler = (e) => {
+      setIsSettingClicked(!isSettingClicked);
    };
    const notiClickHandler = (e) => {
       setIsNotiClicked(!isNotiClicked);
    };
-
-   const wrapperInfoRef = useRef(null);
-   const wrapperMailRef = useRef(null);
+   const mailClickHandler = (e) => {
+      setIsMailClicked(!isMailClicked);
+   };
+   const infoClickHandler = (e) => {
+      setIsInfoClicked(!isInfoClicked);
+   };
+   const wrapperSettingRef = useRef(null);
    const wrapperNotiRef = useRef(null);
-   clickOutSideHandler(wrapperInfoRef, setIsInfoClicked);
-   clickOutSideHandler(wrapperMailRef, setIsMailClicked);
+   const wrapperMailRef = useRef(null);
+   const wrapperInfoRef = useRef(null);
+   clickOutSideHandler(wrapperSettingRef, setIsSettingClicked);
    clickOutSideHandler(wrapperNotiRef, setIsNotiClicked);
+   clickOutSideHandler(wrapperMailRef, setIsMailClicked);
+   clickOutSideHandler(wrapperInfoRef, setIsInfoClicked);
 
    //send feedback
    const [msg, setMsg] = useState("");
@@ -57,8 +61,13 @@ const ToolBar = (props) => {
    };
    return (
       <div className={classes.ToolBar}>
-         <div className={classes.Item}>
-            <CogIcon className={classes.Icon} />
+         <div className={classes.ItemWrapper} ref={wrapperSettingRef}>
+            <div
+               className={classes.Item}
+               onClick={(e) => settingClickHandler(e)}>
+               <CogIcon className={classes.Icon} />
+            </div>
+            <Setting isClicked={isSettingClicked} />
          </div>
          <div className={classes.ItemWrapper} ref={wrapperNotiRef}>
             <div className={classes.Item} onClick={(e) => notiClickHandler(e)}>

@@ -1,0 +1,52 @@
+.Header {
+   font-size: 15px;
+   padding: 14px 16px;
+   display: flex;
+   align-items: center;
+   height: 56px;
+}
+.Icon {
+   width: 28px;
+   margin-right: 6px;
+   cursor: pointer;
+}
+.DropDownMenu {
+   --time-transition: 0.3s;
+   margin-bottom: 20px;
+}
+.Menu {
+   position: absolute;
+   width: 100%;
+}
+.MainMenuEnter {
+   transform: translateX(-50%);
+   opacity: 0;
+}
+.MainMenuEnterActive {
+   transform: translateX(0);
+   opacity: 1;
+   transition: all var(--time-transition) linear;
+}
+.MainMenuExit {
+   opacity: 1;
+}
+.MainMenuExitActive {
+   opacity: 0;
+   transition: all var(--time-transition) linear;
+}
+.SubMenuEnter {
+   transform: translateX(50%);
+   opacity: 0;
+}
+.SubMenuEnterActive {
+   transform: translateX(0);
+   opacity: 1;
+   transition: all var(--time-transition) linear;
+}
+.SubMenuExit {
+   opacity: 1;
+}
+.SubMenuExitActive {
+   opacity: 0;
+   transition: all var(--time-transition) linear;
+}
