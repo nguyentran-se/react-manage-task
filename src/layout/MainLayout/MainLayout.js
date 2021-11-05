@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../../components/Header/Header";
-import SideBar from "../../../components/Navigation/SideBar/SideBar";
-import PopupGuide from "../../../components/PopupGuide/PopupGuide";
-import TaskBar from "../../../components/Tasks/TaskBar/TaskBar";
-import classes from "./MainLayoutRoute.css";
-export const Layout = (props) => {
+import Header from "../../components/Header/Header";
+import SideBar from "../../components/Navigation/SideBar/SideBar";
+import PopupGuide from "../../components/PopupGuide/PopupGuide";
+import TaskBar from "../../components/Tasks/TaskBar/TaskBar";
+import classes from "./MainLayout.css";
+const MainLayout = (props) => {
   const [Guide, setGuide] = useState(true);
   useEffect(() => {
     if (localStorage.getItem("first-visit") === "false") {
@@ -37,3 +37,4 @@ export const Layout = (props) => {
 //   );
 // };
 // export default MainLayoutRoute;
+export default MainLayout;

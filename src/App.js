@@ -38,10 +38,12 @@ const App = (props) => {
         user.getIdToken().then((response) => {
           // console.log("[getTOKEN]");
           const token = response;
-          const { uid, displayName, photoURL } = user;
+          // console.log(token);
+          console.log(user);
+          const { uid, displayName, photoURL, email } = user;
           props.fetchTasks(token, uid);
 
-          onLoginSuccess(token, uid, displayName, photoURL);
+          onLoginSuccess(token, uid, displayName, photoURL, email);
         });
       });
     return () => {
@@ -70,9 +72,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     onLoginStart: () => dispatch(actionCreators.loginStart()),
-    onLoginSuccess: (token, userId, displayName, photoURL) =>
+    onLoginSuccess: (token, userId, displayName, photoURL, email) =>
       dispatch(
-        actionCreators.loginSuccess(token, userId, displayName, photoURL)
+        actionCreators.loginSuccess(token, userId, displayName, photoURL, email)
       ),
     onLogout: () => dispatch(actionCreators.logoutSuccess()),
     fetchTasks: (token, userId) =>

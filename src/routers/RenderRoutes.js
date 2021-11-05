@@ -1,6 +1,6 @@
 import React, { Fragment, Suspense } from "react";
 import { Route, Switch } from "react-router";
-import { Layout } from "../hoc/Layout/MainLayoutRoute/MainLayoutRoute";
+import MainLayout from "../layout/MainLayout/MainLayout";
 import routers from "./routers";
 
 const RenderRoutes = () => {
@@ -21,7 +21,7 @@ const RenderRoutes = () => {
                 />
               );
             })}
-          <Layout>
+          <MainLayout>
             <Suspense fallback={<div></div>}>
               <Switch>
                 {routers
@@ -44,7 +44,7 @@ const RenderRoutes = () => {
                   })}
               </Switch>
             </Suspense>
-          </Layout>
+          </MainLayout>
         </Switch>
       </Suspense>
     </Fragment>
