@@ -17,6 +17,17 @@
 .Menu {
    position: absolute;
    width: 100%;
+   padding: 0 16px;
+}
+.MenuBackground{
+   display: flex;
+   flex-wrap: wrap;
+   margin: 0 -4px;
+}
+.MenuBackground div {
+   margin-bottom: 8px;
+   flex-basis: 50%;
+   padding: 0 4px;
 }
 .MainMenuEnter {
    transform: translateX(-50%);
