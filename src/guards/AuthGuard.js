@@ -4,7 +4,7 @@ import { Redirect } from "react-router";
 import { PATH_NAME } from "../config/pathNames";
 
 const AuthGuard = ({ children, isAuthenticated }) => {
-  if (!isAuthenticated) return <Redirect to={PATH_NAME.HOME} />;
+  if (!isAuthenticated) return <Redirect to={PATH_NAME.ROOT} />;
   return <Fragment>{children}</Fragment>;
 };
 const mapStateToProps = (state) => ({
