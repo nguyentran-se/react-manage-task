@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import Counter from "../../components/Counter/Counter";
 import TaskItems from "../../components/Tasks/TaskItems/TaskItems";
 import Tasks from "../../components/Tasks/Tasks";
 import WhiteBlock from "../../components/UI/WhiteBlock/WhiteBlock";
@@ -77,6 +78,7 @@ const Trash = ({ taskTrash }) => {
       <WhiteBlock>
         <div className={classes.Header}>
           <h3>Trash</h3>
+          <Counter length={taskTrash.length} />
         </div>
         <TaskItems tasks={taskTrash} isSelected isScrolled />
       </WhiteBlock>
