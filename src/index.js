@@ -9,28 +9,30 @@ import { Provider } from "react-redux";
 import taskReducer from "./store/reducers/taskReducer";
 import authReducer from "./store/reducers/authReducer";
 import thunk from "redux-thunk";
+import trashReducer from "./store/reducers/trashReducer";
 
 const composeEnhancers =
-   process.env.NODE_ENV === "development"
-      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-      : null || compose;
+  process.env.NODE_ENV === "development"
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
 
 const rootReducer = combineReducers({
-   tsk: taskReducer,
-   auth: authReducer,
+  tsk: taskReducer,
+  auth: authReducer,
+  trash: trashReducer,
 });
 
 const store = createStore(
-   rootReducer,
-   composeEnhancers(applyMiddleware(thunk))
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
 );
 
 ReactDOM.render(
-   <Provider store={store}>
-      <BrowserRouter>
-         <App />
-      </BrowserRouter>
-   </Provider>,
-   document.getElementById("root")
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById("root")
 );
 registerServiceWorker();

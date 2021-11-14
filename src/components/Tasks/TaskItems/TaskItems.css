@@ -2,6 +2,17 @@
    overflow: hidden;
    transition: all linear 0.3s;
 }
+.TasksList.TasksListScroll{
+   overflow: auto;
+}
+.TasksListScroll::-webkit-scrollbar {
+   width: 6px;
+   background-color: var(--transparent-color);
+}
+.TasksListScroll::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: var(--sidebar-icon-color);
+}
 .ItemWrapper {
    padding: 4px 10px;
    cursor: pointer;
@@ -83,6 +94,19 @@
 }
 
 .Trash {
+   position: absolute;
+   top: 50%;
+   right: 20px;
+
+   width: 30px;
+
+   color: var(--primary-color);
+   filter: brightness(1.2);
+
+   transform: translateY(-50%);
+   transition: all linear 0.3s;
+}
+.UndoIcon{
    position: absolute;
    top: 50%;
    right: 20px;
