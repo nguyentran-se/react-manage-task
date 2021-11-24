@@ -1,6 +1,8 @@
 import * as actionTypes from "../actions/actionTypes";
 const initialState = {
-  taskTrash: [],
+  trashTask: [],
+  loading: false,
+  error: null,
 };
 
 const trashReducer = (state = initialState, { type, payload }) => {
@@ -8,12 +10,21 @@ const trashReducer = (state = initialState, { type, payload }) => {
     case actionTypes.ADD_TO_TRASH:
       return {
         ...state,
-        taskTrash: [
-          ...state.taskTrash,
+        trashTask: [
+          ...state.trashTask,
           { ...payload, isCompleted: true, isActive: false },
         ],
       };
-
+    case actionTypes.FETCH_TRASH_START:
+      return { ...state, loading: true };
+    case actionTypes.FETCH_TRASH_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        trashTask: [...payload],
+      };
+    case actionTypes.FETCH_TRASH_FAILED:
+      return { ...state, loading: false, error: payload };
     default:
       return state;
   }

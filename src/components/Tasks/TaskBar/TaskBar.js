@@ -19,6 +19,7 @@ const TasksBar = (props) => {
     userInfo,
     token,
     onSortTasks,
+    trash,
   } = props;
   const iconClasses = [classes.Icon];
   if (iconLoading) iconClasses.push(classes.IconLoading);
@@ -68,7 +69,7 @@ const TasksBar = (props) => {
         <div
           title="Save tasks"
           className={classes.Item}
-          onClick={() => isUpdated && pushTasks(groups, token, userId)}
+          onClick={() => isUpdated && pushTasks(groups, token, userId, trash)}
           style={{ cursor: !isUpdated && "not-allowed" }}>
           <RefreshIcon className={iconClasses.join(" ")} />
         </div>
@@ -86,13 +87,14 @@ const mapStateToProps = (state) => {
     isUpdated: state.tsk.isUpdated,
     token: state.auth.token,
     userInfo: state.auth.userInfo,
+    trash: state.trash.trashTask,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    pushTasks: (groups, token, userId) =>
-      dispatch(actionCreators.pushTasks(groups, token, userId)),
+    pushTasks: (groups, token, userId, trash) =>
+      dispatch(actionCreators.pushTasks(groups, token, userId, trash)),
     clearCompleted: () => dispatch(actionCreators.clearCompleted()),
     onSortTasks: () => dispatch(actionCreators.sortTasks()),
   };
