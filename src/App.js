@@ -39,7 +39,7 @@ const App = (props) => {
           // console.log("[getTOKEN]");
           const token = response;
           // console.log(token);
-          console.log(user);
+          // console.log(user);
           const { uid, displayName, photoURL, email } = user;
           fetchTasks(token, uid);
           getTrashTasks(uid);

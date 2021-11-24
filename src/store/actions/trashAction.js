@@ -23,3 +23,7 @@ export const getTrashTasks = (userId) => {
     }
   };
 };
+
+export const deleteTrashTask = (index) => {
+  return { type: actionTypes.DELETE_TRASH_TASK, payload: index };
+};

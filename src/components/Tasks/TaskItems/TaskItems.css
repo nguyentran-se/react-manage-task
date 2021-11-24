@@ -108,7 +108,7 @@
 }
 .UndoIcon{
    position: absolute;
-   top: 50%;
+   top: 42%;
    right: 20px;
 
    width: 30px;
@@ -158,4 +158,49 @@
 }
 .ItemWrapper.Completed .Content h4::after {
    width: 316px;
+}
+.Btn {
+   padding: 19px;
+   text-align: center;
+   /* flex: 1; */
+   color: #fd2837;
+   cursor: pointer;
+   transition: all linear 0.3s;
+   user-select: none;
+   font-weight: var(--fw-medium-level);
+}
+.Btn:hover {
+   background-color: var(--hover-modal-control);
+}
+.Option{
+   color: var(--text-color);
+   height: 120px;
+   text-align: center;
+   padding: 19px 16px;
+   cursor: default;
+
+}
+/* .Option h3{
+   cursor: default;
+} */
+.OptionButtons{
+   margin-top: 20px;
+   display: flex;
+   justify-content: space-evenly;
+}
+.OptionButtons button{
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   background-color: var(--primary-color);
+   border: 0;
+   color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+   transition: all .2s linear;
+}
+.OptionButtons button:active{
+   transform: translateY(4px);
+}
+.OptionButtons button:nth-of-type(2){
+   background-color: #fd2837;
 }

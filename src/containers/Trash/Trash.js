@@ -72,7 +72,7 @@ import classes from "./Trash.css";
 //     title: "test height sidebar playlist-item",
 //   },
 // ];
-const Trash = ({ trashTask, loading, userId }) => {
+const Trash = ({ trashTask, loading }) => {
   return (
     <div className={classes.Trash}>
       <WhiteBlock>
@@ -89,7 +89,6 @@ const Trash = ({ trashTask, loading, userId }) => {
 const mapStateToProps = (state) => {
   return {
     trashTask: state.trash.trashTask,
-    userId: state.auth.userInfo.userId,
     loading: state.trash.loading,
   };
 };

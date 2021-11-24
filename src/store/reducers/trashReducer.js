@@ -25,6 +25,11 @@ const trashReducer = (state = initialState, { type, payload }) => {
       };
     case actionTypes.FETCH_TRASH_FAILED:
       return { ...state, loading: false, error: payload };
+    case actionTypes.DELETE_TRASH_TASK:
+      return {
+        ...state,
+        trashTask: [...state.trashTask.filter((_, index) => index !== payload)],
+      };
     default:
       return state;
   }
