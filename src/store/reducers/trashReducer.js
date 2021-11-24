@@ -30,6 +30,11 @@ const trashReducer = (state = initialState, { type, payload }) => {
         ...state,
         trashTask: [...state.trashTask.filter((_, index) => index !== payload)],
       };
+    case actionTypes.CLEAN_TRASH:
+      return {
+        ...state,
+        trashTask: [],
+      };
     default:
       return state;
   }

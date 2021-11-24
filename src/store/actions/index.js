@@ -16,4 +16,9 @@ export {
 
 export { loginStart, loginSuccess, logout, logoutSuccess } from "./authAction";
 
-export { addToTrash, getTrashTasks, deleteTrashTask } from "./trashAction";
+export {
+  addToTrash,
+  getTrashTasks,
+  deleteTrashTask,
+  cleanTrash,
+} from "./trashAction";

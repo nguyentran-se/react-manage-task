@@ -27,3 +27,7 @@ export const getTrashTasks = (userId) => {
 export const deleteTrashTask = (index) => {
   return { type: actionTypes.DELETE_TRASH_TASK, payload: index };
 };
+
+export const cleanTrash = () => {
+  return { type: actionTypes.CLEAN_TRASH };
+};

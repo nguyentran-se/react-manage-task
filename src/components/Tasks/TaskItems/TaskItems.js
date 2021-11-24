@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import classes from "./TaskItems.css";
 import { DotsCircleHorizontalIcon, TrashIcon } from "@heroicons/react/outline";
-import { CheckCircleIcon, ReplyIcon } from "@heroicons/react/solid";
+import { CheckCircleIcon } from "@heroicons/react/solid";
+import React, { useState } from "react";
 import { connect } from "react-redux";
-import * as actionCreators from "../../../store/actions/index";
 import { useLocation } from "react-router";
 import { PATH_NAME } from "../../../config/pathNames";
+import * as actionCreators from "../../../store/actions/index";
 import Modal from "../../UI/Modal/Modal";
+import classes from "./TaskItems.css";
 
 const TaskItems = ({
   tasks,
@@ -29,6 +29,7 @@ const TaskItems = ({
 
   const undoHandler = (index) => {
     // console.log(tasks[index].title);
+    setShowModal(false);
     addTask(tasks[index].title);
     deleteTrashTask(index);
   };
@@ -84,7 +85,11 @@ const TaskItems = ({
                     <button onClick={() => undoHandler(index)}>
                       Undo To Your Task
                     </button>
-                    <button onClick={() => deleteTrashTask(index)}>
+                    <button
+                      onClick={() => {
+                        setShowModal(false);
+                        deleteTrashTask(index);
+                      }}>
                       Permanently Delete
                     </button>
                   </div>

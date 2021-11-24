@@ -167,7 +167,7 @@
    cursor: pointer;
    transition: all linear 0.3s;
    user-select: none;
-   font-weight: var(--fw-medium-level);
+   font-weight: 700;
 }
 .Btn:hover {
    background-color: var(--hover-modal-control);
@@ -192,15 +192,22 @@
    padding: 10px 15px;
    border-radius: 10px;
    cursor: pointer;
-   background-color: var(--primary-color);
+   background-color: rgb(0, 128, 255,0.8);
    border: 0;
    color: #fff;
    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
    transition: all .2s linear;
 }
+
 .OptionButtons button:active{
    transform: translateY(4px);
 }
+.OptionButtons button:nth-of-type(1):hover{
+   background-color: #0080ff;
+}
 .OptionButtons button:nth-of-type(2){
+   background-color: rgb(253, 40, 55, 0.8);
+}
+.OptionButtons button:nth-of-type(2):hover{
    background-color: #fd2837;
 }
