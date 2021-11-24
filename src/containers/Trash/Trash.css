@@ -1,0 +1,25 @@
+.Trash{
+  position: relative;
+  top: 200px;
+  left: 40px;
+  width: 900px;
+  height: 450px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+.Header{
+  padding: 25px 20px 7px 24px;
+  user-select: none;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+}
+.Header:hover {
+  color: var(--primary-color);
+}
+.Header h3{
+  font-size: 18px;
+  font-weight: var(--fw-high-level);
+  text-transform: capitalize;
+}

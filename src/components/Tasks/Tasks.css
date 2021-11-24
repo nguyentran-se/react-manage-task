@@ -11,16 +11,14 @@
    border-radius: 10px;
    background-color: var(--sidebar-icon-color);
 }
-.Header {
-   display: flex;
-   justify-content: space-between;
-}
 
 .Header {
    padding: 25px 20px 7px 24px;
    cursor: pointer;
    user-select: none;
    color: var(--text-color);
+   display: flex;
+   justify-content: space-between;
 }
 
 .Header:hover {

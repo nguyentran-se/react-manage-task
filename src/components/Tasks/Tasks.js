@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "../Counter/Counter";
 import TaskItems from "./TaskItems/TaskItems";
 import classes from "./Tasks.css";
 
@@ -12,9 +13,12 @@ const Tasks = (props) => {
     <div key={topic}>
       <div onClick={() => toggleTaskList(topic)} className={classes.Header}>
         <h3>{topic}</h3>
-        <div className={classes.Counter}>
+        <Counter
+          length={groups[topic].tasks.filter((ele) => !ele.isCompleted).length}
+        />
+        {/* <div className={classes.Counter}>
           {groups[topic].tasks.filter((ele) => !ele.isCompleted).length}
-        </div>
+        </div> */}
       </div>
       <TaskItems
         isSelected={groups[topic].isSelected}

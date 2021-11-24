@@ -8,6 +8,8 @@ import {
 } from "@heroicons/react/outline";
 import { connect } from "react-redux";
 import * as actionCreators from "../../../store/actions/index";
+import { useLocation } from "react-router";
+import { PATH_NAME } from "../../../config/pathNames";
 
 const TasksBar = (props) => {
   const {
@@ -19,6 +21,8 @@ const TasksBar = (props) => {
     userInfo,
     token,
     onSortTasks,
+    trash,
+    cleanTrash,
   } = props;
   const iconClasses = [classes.Icon];
   if (iconLoading) iconClasses.push(classes.IconLoading);
@@ -29,6 +33,7 @@ const TasksBar = (props) => {
     name = userInfo.displayName.split(" ")[0];
     userId = userInfo.userId;
   }
+  const location = useLocation().pathname;
   // if (!isUpdated) {
   //    setTimeout(() => {
   //       iconClasses.push(classes.Disabled);
@@ -46,29 +51,47 @@ const TasksBar = (props) => {
                </span> */}
         </h3>
         <div className={classes.Separate}></div>
-        <div
-          title="Clear"
-          className={classes.Item}
-          onClick={() => clearCompleted()}
-          style={{ cursor: !hasCompleted && "not-allowed" }}>
-          <XCircleIcon
-            className={
-              hasCompleted
-                ? classes.Icon
-                : `${classes.Icon} ${classes.Disabled}`
-            }
-          />
-        </div>
-        <div className={classes.Item} title="Sort">
-          <SwitchVerticalIcon
-            className={classes.Icon}
-            onClick={() => onSortTasks()}
-          />
-        </div>
+        {location !== PATH_NAME.TRASH ? (
+          <React.Fragment>
+            <div
+              title="Clear"
+              className={classes.Item}
+              onClick={() => clearCompleted()}
+              style={{ cursor: !hasCompleted && "not-allowed" }}>
+              <XCircleIcon
+                className={
+                  hasCompleted
+                    ? classes.Icon
+                    : `${classes.Icon} ${classes.Disabled}`
+                }
+              />
+            </div>
+            <div className={classes.Item} title="Sort">
+              <SwitchVerticalIcon
+                className={classes.Icon}
+                onClick={() => onSortTasks()}
+              />
+            </div>
+          </React.Fragment>
+        ) : (
+          <div
+            title="Clear"
+            className={classes.Item}
+            onClick={cleanTrash}
+            style={{ cursor: trash.length === 0 && "not-allowed" }}>
+            <XCircleIcon
+              className={
+                trash.length !== 0
+                  ? classes.Icon
+                  : `${classes.Icon} ${classes.Disabled}`
+              }
+            />
+          </div>
+        )}
         <div
           title="Save tasks"
           className={classes.Item}
-          onClick={() => isUpdated && pushTasks(groups, token, userId)}
+          onClick={() => isUpdated && pushTasks(groups, token, userId, trash)}
           style={{ cursor: !isUpdated && "not-allowed" }}>
           <RefreshIcon className={iconClasses.join(" ")} />
         </div>
@@ -86,15 +109,17 @@ const mapStateToProps = (state) => {
     isUpdated: state.tsk.isUpdated,
     token: state.auth.token,
     userInfo: state.auth.userInfo,
+    trash: state.trash.trashTask,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    pushTasks: (groups, token, userId) =>
-      dispatch(actionCreators.pushTasks(groups, token, userId)),
+    pushTasks: (groups, token, userId, trash) =>
+      dispatch(actionCreators.pushTasks(groups, token, userId, trash)),
     clearCompleted: () => dispatch(actionCreators.clearCompleted()),
     onSortTasks: () => dispatch(actionCreators.sortTasks()),
+    cleanTrash: () => dispatch(actionCreators.cleanTrash()),
   };
 };
 

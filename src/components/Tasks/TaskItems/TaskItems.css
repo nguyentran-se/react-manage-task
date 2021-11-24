@@ -2,6 +2,17 @@
    overflow: hidden;
    transition: all linear 0.3s;
 }
+.TasksList.TasksListScroll{
+   overflow: auto;
+}
+.TasksListScroll::-webkit-scrollbar {
+   width: 6px;
+   background-color: var(--transparent-color);
+}
+.TasksListScroll::-webkit-scrollbar-thumb {
+   border-radius: 10px;
+   background-color: var(--sidebar-icon-color);
+}
 .ItemWrapper {
    padding: 4px 10px;
    cursor: pointer;
@@ -95,6 +106,19 @@
    transform: translateY(-50%);
    transition: all linear 0.3s;
 }
+.UndoIcon{
+   position: absolute;
+   top: 42%;
+   right: 20px;
+
+   width: 30px;
+
+   color: var(--primary-color);
+   filter: brightness(1.2);
+
+   transform: translateY(-50%);
+   transition: all linear 0.3s;
+}
 .Trash:hover {
    filter: brightness(1.3);
 }
@@ -134,4 +158,56 @@
 }
 .ItemWrapper.Completed .Content h4::after {
    width: 316px;
+}
+.Btn {
+   padding: 19px;
+   text-align: center;
+   /* flex: 1; */
+   color: #fd2837;
+   cursor: pointer;
+   transition: all linear 0.3s;
+   user-select: none;
+   font-weight: 700;
+}
+.Btn:hover {
+   background-color: var(--hover-modal-control);
+}
+.Option{
+   color: var(--text-color);
+   height: 120px;
+   text-align: center;
+   padding: 19px 16px;
+   cursor: default;
+
+}
+/* .Option h3{
+   cursor: default;
+} */
+.OptionButtons{
+   margin-top: 20px;
+   display: flex;
+   justify-content: space-evenly;
+}
+.OptionButtons button{
+   padding: 10px 15px;
+   border-radius: 10px;
+   cursor: pointer;
+   background-color: rgb(0, 128, 255,0.8);
+   border: 0;
+   color: #fff;
+   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+   transition: all .2s linear;
+}
+
+.OptionButtons button:active{
+   transform: translateY(4px);
+}
+.OptionButtons button:nth-of-type(1):hover{
+   background-color: #0080ff;
+}
+.OptionButtons button:nth-of-type(2){
+   background-color: rgb(253, 40, 55, 0.8);
+}
+.OptionButtons button:nth-of-type(2):hover{
+   background-color: #fd2837;
 }

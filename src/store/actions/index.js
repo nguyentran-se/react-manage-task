@@ -15,3 +15,10 @@ export {
 } from "./taskAction";
 
 export { loginStart, loginSuccess, logout, logoutSuccess } from "./authAction";
+
+export {
+  addToTrash,
+  getTrashTasks,
+  deleteTrashTask,
+  cleanTrash,
+} from "./trashAction";
