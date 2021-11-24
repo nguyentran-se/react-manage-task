@@ -1,3 +1,4 @@
+//Tasks
 export const TOGGLE_TASKLIST = "TOGGLE_TASKLIST";
 export const ADD_TASK = "ADD_TASK";
 export const DELETE_TASK = "DELETE_TASK";
@@ -17,9 +18,18 @@ export const PUSH_TASK_START = "PUSH_TASK_START";
 export const PUSH_TASK_SUCCESS = "PUSH_TASK_SUCCESS";
 export const PUSH_TASK_FAILED = "PUSH_TASK_FAILED";
 
+//Auth
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 
 export const LOGOUT_START = "LOGOUT_START";
 export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
 export const LOGOUT_FAILED = "LOGOUT_FAILED";
+
+//Trash
+export const ADD_TO_TRASH = "ADD_TO_TRASH";
+export const DELETE_TRASH_TASK = "DELETE_TRASH_TASK";
+export const FETCH_TRASH_START = "FETCH_TRASH_START";
+export const FETCH_TRASH_SUCCESS = "FETCH_TRASH_SUCCESS";
+export const FETCH_TRASH_FAILED = "FETCH_TRASH_FAILED";
+export const CLEAN_TRASH = "CLEAN_TRASH";

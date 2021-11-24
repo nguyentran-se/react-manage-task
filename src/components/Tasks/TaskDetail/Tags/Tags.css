@@ -70,7 +70,7 @@
    cursor: pointer;
    transition: all linear 0.3s;
    user-select: none;
-   font-weight: var(--fw-medium-level);
+   font-weight: 700;
 }
 /* .Control div:nth-child(3) {
    color: var(--primary-color);

@@ -20,7 +20,7 @@ const config = {
 firebase.initializeApp(config);
 
 const App = (props) => {
-  const { onLoginStart, onLoginSuccess } = props;
+  const { onLoginStart, onLoginSuccess, fetchTasks, getTrashTasks } = props;
   const [preloader, setPreloader] = useState(true);
   useEffect(() => {
     let timeout = setTimeout(() => {
@@ -39,10 +39,10 @@ const App = (props) => {
           // console.log("[getTOKEN]");
           const token = response;
           // console.log(token);
-          console.log(user);
+          // console.log(user);
           const { uid, displayName, photoURL, email } = user;
-          props.fetchTasks(token, uid);
-
+          fetchTasks(token, uid);
+          getTrashTasks(uid);
           onLoginSuccess(token, uid, displayName, photoURL, email);
         });
       });
@@ -79,6 +79,7 @@ const mapDispatchToProps = (dispatch) => {
     onLogout: () => dispatch(actionCreators.logoutSuccess()),
     fetchTasks: (token, userId) =>
       dispatch(actionCreators.fetchTasks(token, userId)),
+    getTrashTasks: (userId) => dispatch(actionCreators.getTrashTasks(userId)),
   };
 };
 

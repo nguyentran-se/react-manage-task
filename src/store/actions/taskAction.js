@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import taskApi from "../../api/taskApi";
+import trashApi from "../../api/trashApi";
 
 export const toggleTaskList = (topic) => {
   return { type: actionTypes.TOGGLE_TASKLIST, topic };
@@ -71,17 +72,16 @@ const pushTaskFailed = (err) => {
   return { type: actionTypes.PUSH_TASK_FAILED, err };
 };
 
-export const pushTasks = (data, token, userId) => {
-  return (dispatch) => {
+export const pushTasks = (data, token, userId, trash) => {
+  return async (dispatch) => {
     dispatch(pushTaskStart());
-    taskApi
-      .pushTasks(data, token, userId)
-      .then((response) => {
-        dispatch(pushTaskSuccess());
-      })
-      .catch((err) => {
-        dispatch(pushTaskFailed());
-      });
+    try {
+      await taskApi.pushTasks(data, token, userId);
+      await trashApi.pushTrashTasks(trash, userId);
+      dispatch(pushTaskSuccess());
+    } catch (error) {
+      dispatch(pushTaskFailed());
+    }
   };
 };
 
